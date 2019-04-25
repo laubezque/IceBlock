@@ -14,7 +14,7 @@ public class BlablacarResource extends HttpServlet {
 	private static final String LOCALE = "es_ES";
 	private static final String _FORMAT ="json" ;
 	private static final String CUR = "EUR" ;
-	private static String origen
+	private static String origen;
 	
 	
 	public static String getURLTrips() {
