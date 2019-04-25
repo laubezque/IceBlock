@@ -1,0 +1,21 @@
+2019-04-25 22:05:24,724 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2019-04-25 22:07:02,511 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-04-25 22:09:46,349 [Worker-15: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: aiss:project_name:0.0.1-SNAPSHOT @ C:\Users\enriq\git\IceBlock\pom.xml.
+2019-04-25 22:10:01,005 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-04-25 22:10:01,015 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-04-25 22:10:02,014 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Executing tasks
+2019-04-25 22:10:02,161 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Executed tasks
+2019-04-25 22:10:02,163 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-04-25 22:10:02,163 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\enriq\git\IceBlock\src\test\resources
+2019-04-25 22:10:10,904 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-04-25 22:10:10,927 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-04-25 22:10:11,022 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Executing tasks
+2019-04-25 22:10:11,035 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Executed tasks
+2019-04-25 22:10:11,036 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-04-25 22:10:11,036 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\enriq\git\IceBlock\src\test\resources
+2019-04-25 22:10:56,993 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-04-25 22:10:56,994 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-04-25 22:10:57,124 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Executing tasks
+2019-04-25 22:10:57,144 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Executed tasks
+2019-04-25 22:10:57,145 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-04-25 22:10:57,145 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\enriq\git\IceBlock\src\test\resources
