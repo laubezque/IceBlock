@@ -27,9 +27,16 @@
         <div class="textoBox">
             <p class="Pbox">What are you looking for?</p>
         </div>
-        <div class="search-box">
-                <input type="text" placeholder=" " /><span></span>
-        </div>
+        	<div class="search-box">
+				<form action="EventKeywordTicketMasterController"  method="post">
+				
+				
+					<input type="text" placeholder=" " id="keyword" name="key_word" /><span></span>
+				
+				</form>
+            	    
+        	</div>
+ 
         <div class="container" >
             	<a class="btn" href="/LoginGoogle">
                 <svg width="277" height="62">
@@ -41,7 +48,7 @@
                     </defs>
                     <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
                 </svg>
-              <span>--Iniciar sesión--</span>
+              <span>Iniciar sesion</span>
             </a>
         </div>  
     </main>

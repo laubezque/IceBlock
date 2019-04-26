@@ -43,6 +43,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>BlablacarSearchController</display-name>
+    <servlet-name>BlablacarSearchController</servlet-name>
+    <servlet-class>aiss.controller.BlablacarSearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BlablacarSearchController</servlet-name>
+    <url-pattern>/BlablacarSearchController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>TicketmasterResource</display-name>
     <servlet-name>TicketmasterResource</servlet-name>
     <servlet-class>aiss.model.resource.TicketmasterResource</servlet-class>
@@ -53,12 +63,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>BlablacarSearchController</display-name>
-    <servlet-name>BlablacarSearchController</servlet-name>
-    <servlet-class>aiss.controller.BlablacarSearchController</servlet-class>
+    <display-name>EventKeywordTicketMasterController</display-name>
+    <servlet-name>EventKeywordTicketMasterController</servlet-name>
+    <servlet-class>aiss.controller.EventKeywordTicketMasterController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BlablacarSearchController</servlet-name>
-    <url-pattern>/BlablacarSearchController</url-pattern>
+    <servlet-name>EventKeywordTicketMasterController</servlet-name>
+    <url-pattern>/EventKeywordTicketMasterController</url-pattern>
   </servlet-mapping>
 </web-app>
