@@ -1,3 +1,5 @@
 INDEX VERSION 1.131
+/home/antonio/Documentos/GitHub/IceBlock/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2970271457.index
+/Ice_block/src/main/java
 C:\Users\enriq\OneDrive\Documentos\GitHub\IceBlock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3673833898.index
 \Ice_block\src\main\java
