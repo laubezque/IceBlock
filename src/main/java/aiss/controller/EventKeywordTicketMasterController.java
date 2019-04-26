@@ -2,6 +2,7 @@ package aiss.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.jboss.resteasy.util.Encode;
 
 import com.google.appengine.repackaged.com.google.common.base.Ticker;
 import com.google.apphosting.utils.remoteapi.RemoteApiPb.Request;
@@ -58,14 +61,15 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE></HEAD>");
+		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE><meta charset=\"UTF-8\"/></HEAD>");
 		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
 		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
 		pw.println("<H2></H2><P>");
 		pw.println("<UL>\n");
 		
 		String keyword = request.getParameter("key_word");
-		Embedded URL = TicketmasterResource.searchByKeyword(keyword);
+		
+		Embedded URL = TicketmasterResource.searchByKeyword(codificarStringUrl(keyword));
 		Map<String, Object> e = URL.getAdditionalProperties();
 		
 		//split(e);
@@ -75,13 +79,28 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
 //		pw.println("URL -> " + e.get("_embedded") + "<BR>");
-		split(e.get("_embedded").toString(),PropiedadesEventosTM.IMAGEN_URL);
+//		split(e.get("_embedded").toString(),PropiedadesEventosTM.IMAGEN_URL);
 
 		pw.println("URL -> " + e + "<BR>");
 		
 		pw.println("</BODY></HTML>");
 		pw.close();
 
+		
+	}
+
+	private String codificarStringUrl(String keyword) {
+		String res = "";
+		String[] splits =  keyword.split(" ");
+		for(Integer i=0; i < splits.length;i++) {
+			if(i!=0) {
+				res = res + "+" + (splits[i].trim());
+			}
+			res = (splits[i].trim());
+			
+		}
+		return res;
+		
 		
 	}
 
