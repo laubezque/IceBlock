@@ -48,7 +48,7 @@
                     </defs>
                     <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
                 </svg>
-              <span>Iniciar sesion</span>
+              <span>Iniciar sesión 2</span>
             </a>
         </div>  
     </main>
