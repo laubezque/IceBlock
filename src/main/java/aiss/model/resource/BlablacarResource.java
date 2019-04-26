@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServlet;
 
 import org.restlet.resource.ClientResource;
 
-import aiss.model.blablacar.search.ArrivalPlace;
-import aiss.model.blablacar.search.DeparturePlace;
+import aiss.controller.BlablacarSearchController;
+import aiss.model.blablacar.search.Links_;
 
 public class BlablacarResource extends HttpServlet {
 	
@@ -20,7 +20,7 @@ public class BlablacarResource extends HttpServlet {
 	private static final String LOCALE = "es_ES";
 	private static final String _FORMAT ="json" ;
 	private static final String CUR = "EUR" ;
-	private static DeparturePlace dep;
+	
 	
 	
 	public static String getURLTrips() {
@@ -28,23 +28,26 @@ public class BlablacarResource extends HttpServlet {
 		String result = URLBaseBlablacarSearch + URLBlablacarTrips + "?" 
 		+ "locale=" + LOCALE + "&" + "_format=" + _FORMAT + "&" + "cur=" + CUR + "key=" + BLABLACAR_API_KEY;
 		
-		//ClientResource bl = new ClientResource(result);
 		
 		return result;
 	}
 	
-//	public static String getTripsWith(DeparturePlace dep, ArrivalPlace ar, String date) {
-//		
-//		
-//		
-//		String base = URLBaseBlablacarSearch + URLBlablacarTrips + "?" 
-//				+ "locale=" + LOCALE + "&" + "_format=" + _FORMAT + "&" + "cur=" + CUR + "key=" + BLABLACAR_API_KEY;
-//		String res = base + "&fn=" + dep + "&tn=" + ar + "&de=" + date;
-//		
-//		ClientResource bl = new ClientResource(res);
-//		
-//	
-//	}
+	public static Links_ getTripsWith(String dep, String ar, String date) {
+		
+		
+		String base = URLBaseBlablacarSearch + URLBlablacarTrips + "?" 
+				+ "locale=" + LOCALE + "&" + "_format=" + _FORMAT + "&" + "cur=" + CUR + "key=" + BLABLACAR_API_KEY;
+		String res = base + "&fn=" + dep + "&tn=" + ar + "&de=" + date;
+		
+		
+		ClientResource bl = new ClientResource(res);
+		Links_ blSearch = bl.get(Links_.class);
+		
+		return blSearch;
+		
+
+	
+	}
 	
 	
 	
