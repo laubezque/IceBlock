@@ -34,7 +34,7 @@
     </init-param>
     <init-param>
       <param-name>onSuccess</param-name>
-      <param-value>redirect:/busqueda.jsp</param-value>
+      <param-value>redirect:/busqueda4.jsp</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
@@ -70,5 +70,65 @@
   <servlet-mapping>
     <servlet-name>EventKeywordTicketMasterController</servlet-name>
     <url-pattern>/EventKeywordTicketMasterController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarInsertController</display-name>
+    <servlet-name>CalendarInsertController</servlet-name>
+    <servlet-class>aiss.controller.CalendarInsertController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarInsertController</servlet-name>
+    <url-pattern>/CalendarInsertController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarDeleteController</display-name>
+    <servlet-name>CalendarDeleteController</servlet-name>
+    <servlet-class>aiss.controller.CalendarDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarDeleteController</servlet-name>
+    <url-pattern>/CalendarDeleteController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarGetListController</display-name>
+    <servlet-name>CalendarGetListController</servlet-name>
+    <servlet-class>aiss.controller.CalendarGetListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarGetListController</servlet-name>
+    <url-pattern>/CalendarGetListController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarGetEventController</display-name>
+    <servlet-name>CalendarGetEventController</servlet-name>
+    <servlet-class>aiss.controller.CalendarGetEventController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarGetEventController</servlet-name>
+    <url-pattern>/CalendarGetEventController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarUpdateController</display-name>
+    <servlet-name>CalendarUpdateController</servlet-name>
+    <servlet-class>aiss.controller.CalendarUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarUpdateController</servlet-name>
+    <url-pattern>/CalendarUpdateController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarQuickAddController</display-name>
+    <servlet-name>CalendarQuickAddController</servlet-name>
+    <servlet-class>aiss.controller.CalendarQuickAddController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarQuickAddController</servlet-name>
+    <url-pattern>/CalendarQuickAddController</url-pattern>
   </servlet-mapping>
 </web-app>

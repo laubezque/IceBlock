@@ -2,101 +2,109 @@ package aiss.model.resource;
 
 import java.util.Map;
 import java.util.logging.Logger;
-import org.restlet.data.ChallengeResponse;
-import org.restlet.data.ChallengeScheme;
-import org.restlet.data.MediaType;
-import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import aiss.model.google.calendar.FileItem;
-import aiss.model.google.calendar.Files;
+import aiss.model.googleCalendar.Item;
+import aiss.model.googleCalendar.ListEvents;
 
 public class GoogleCalendarResource {
 
     private static final Logger log = Logger.getLogger(GoogleCalendarResource.class.getName());
 
     private final String access_token;
-    private final String uri = "https://www.googleapis.com/calendar/v2/files";
+    private final String uri = "https://www.googleapis.com/calendar/v3/calendars/primary/events";
     private final String uri_upload = "https://www.googleapis.com/upload/calendar/v2/files";
 
     public GoogleCalendarResource(String access_token) {
         this.access_token = access_token;
     }
 
-    /**
-     *
-     * @return Files
-     */
-    public Files getFiles() {
+    
+    public Item getEvent(String id) {
         ClientResource cr = null;
-        Files files = null;
+        Item events = null;
+        try {
+            cr = new ClientResource(uri + "/" + id + "?access_token=" + access_token);
+            events = cr.get(Item.class);
+
+        } catch (ResourceException re) {
+            log.warning("Error when retrieving the event: " + cr.getResponse().getStatus());
+        }
+
+        return events;
+
+    }
+
+    public ListEvents getList() {
+        ClientResource cr = null;
+        ListEvents events = null;
         try {
             cr = new ClientResource(uri + "?access_token=" + access_token);
             String result = cr.get(String.class);
-            files = cr.get(Files.class);
+            events = cr.get(ListEvents.class);
 
         } catch (ResourceException re) {
-            log.warning("Error when retrieving all files: " + cr.getResponse().getStatus());
+            log.warning("Error when retrieving all Events: " + cr.getResponse().getStatus());
         }
 
-        return files;
+        return events;
 
     }
+    
 
-    public FileItem getFile(String id) {
-
-        ClientResource cr = null;
-        FileItem file = null;
-        try {
-            cr = new ClientResource(uri + "/" + id + "?access_token=" + access_token);
-            file = cr.get(FileItem.class);
-
-        } catch (ResourceException re) {
-            log.warning("Error when retrieving file: " + cr.getResponse().getStatus());
-        }
-
-        return file;
-
-    }
-
-    public String insertFile(FileItem file, String content) {
+    public Item insertEvent(Item event) { //cambiar FileItem por elemento de ticketMaster
+    														// y acabarlo
 
         ClientResource cr = null;
-        String newId = null;
+        Item newEvent = null;
         try {
-            cr = new ClientResource(uri + "?access_token=" + access_token);
-            FileItem newFile = cr.post(file, FileItem.class);
-            newId = newFile.getId();
-            cr = new ClientResource(uri_upload + "/" + newId + "?uploadType=media&access_token=" + access_token);
-            Map<String, Object> headers = cr.getRequestAttributes();
-            headers.put("Content-Type", "text/plain");
-            cr.put(content);
+            cr = new ClientResource(uri);
+            newEvent = cr.post(event, Item.class);
+          
         } catch (ResourceException re) {
             log.warning("Error when inserting file: " + cr.getResponse().getStatus());
         }
-        return newId;
+        return newEvent;
     }
+    
+    
+    public Boolean quickAddEvent(String content) { //cambiar FileItem por elemento de ticketMaster
+																// y acabarlo
 
-    public boolean updateFile(FileItem file) {
+    	ClientResource cr = null;
+        boolean result = true;
+    	try {
+    		cr = new ClientResource(uri + "/quickAdd" + "?access_token=" + access_token);
+    		cr.put(content);
+    	} catch (ResourceException re) {
+    		log.warning("Error when inserting file: " + cr.getResponse().getStatus());
+            result = false;
+    	}
+    	return result;
+    }
+    
+    
+    public boolean updateEvent(Item Event) {
 
         ClientResource cr = null;
         boolean result = true;
         try {
-            cr = new ClientResource(uri + "/" + file.getId() + "?access_token=" + access_token);
-            cr.put(file);
+            cr = new ClientResource(uri + "/" + Event.getId() + "?access_token=" + access_token);
+            cr.put(Event);
         } catch (ResourceException re) {
-            log.warning("Error when updating file: " + cr.getResponse().getStatus());
+            log.warning("Error when updating event: " + cr.getResponse().getStatus());
             result = false;
         }
         return result;
     }
 
-    public boolean deleteFile(String id) {
+    public boolean deleteEvent(String id) {
 
         ClientResource cr = null;
         boolean result = true;
         try {
+        	
             cr = new ClientResource(uri + "/" + id + "?access_token=" + access_token);
             cr.delete();
         } catch (ResourceException re) {
@@ -106,46 +114,5 @@ public class GoogleCalendarResource {
         return result;
 
     }
-
-    public String getFileContent(FileItem item) {
-        String result = null;
-        String contentURL = item.getDownloadUrl();
-        try {
-            ClientResource cr = new ClientResource(contentURL);
-            /*Map<String, Object> reqAttribs = cr.getRequestAttributes(); 
-	        Series<Header> headers = (Series<Header>)reqAttribs.get("org.restlet.http.headers"); 
-	        if (headers == null) { 
-	            headers = new Series<Header>(Header.class); 
-	            reqAttribs.put("org.restlet.http.headers", headers); 
-	        } 
-	        headers.add(new Header("Authorization:", "Bearer "+access_token));*/
-            ChallengeResponse chr = new ChallengeResponse(
-                    ChallengeScheme.HTTP_OAUTH_BEARER);
-            chr.setRawValue(access_token);
-            cr.setChallengeResponse(chr);
-
-            result = cr.get(String.class);
-        } catch (ResourceException re) {
-            log.warning("Error when obtaining the content of file: " + item.getId());
-        }
-        return result;
-    }
-
-    public boolean updateFileContent(String id, String content) {
-        ClientResource cr = new ClientResource(uri_upload + "/" + id + "?uploadType=media");
-        try {
-            ChallengeResponse chr = new ChallengeResponse(
-                    ChallengeScheme.HTTP_OAUTH_BEARER);
-            chr.setRawValue(access_token);
-            cr.setChallengeResponse(chr);
-            StringRepresentation rep = new StringRepresentation(content, MediaType.TEXT_PLAIN);
-            cr.put(rep);
-        } catch (ResourceException re) {
-            log.warning("Error when updating the content of file: " + id);
-            log.warning(re.getMessage());
-            return false;
-        }
-        return true;
-    }
-
 }
+  
