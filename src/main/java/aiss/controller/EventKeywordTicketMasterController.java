@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import aiss.model.resource.TicketmasterResource;
 import aiss.model.tickermaster.Embedded;
 import aiss.model.tickermaster.Embedded_;
 import aiss.model.tickermaster.Event;
+import aiss.model.tickermaster.Image;
 import aiss.utility.PropiedadesEventosTM;
 
 
@@ -69,19 +71,17 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 		String keyword = request.getParameter("key_word");
 		
-		Embedded URL = TicketmasterResource.searchByKeyword(codificarStringUrl(keyword));
-		Map<String, Object> e = URL.getAdditionalProperties();
-		
+		Embedded event = TicketmasterResource.searchByKeyword(keyword);
+		//List<Image> e = event.getImages();
+
 		//split(e);
 		
 
 		// [_embedded, _links, page]
 		
 		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
-//		pw.println("URL -> " + e.get("_embedded") + "<BR>");
-//		split(e.get("_embedded").toString(),PropiedadesEventosTM.IMAGEN_URL);
 
-		pw.println("URL -> " + e + "<BR>");
+		pw.println("URL -> " + Arrays.toString(event.getEvents().toArray()) + "<BR>");
 		
 		pw.println("</BODY></HTML>");
 		pw.close();
@@ -89,20 +89,6 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 	}
 
-	private String codificarStringUrl(String keyword) {
-		String res = "";
-		String[] splits =  keyword.split(" ");
-		for(Integer i=0; i < splits.length;i++) {
-			if(i!=0) {
-				res = res + "+" + (splits[i].trim());
-			}
-			res = (splits[i].trim());
-			
-		}
-		return res;
-		
-		
-	}
 
 	private String split(String str,PropiedadesEventosTM var) {
 		String res = "";
