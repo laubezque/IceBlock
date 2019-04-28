@@ -1,6 +1,8 @@
 package aiss.model.resource;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
@@ -37,10 +39,12 @@ public class TicketmasterResource extends HttpServlet {
 		return TICKETMASTER_API_KEY;
 	}
       
-	public static Embedded searchByKeyword(String keyword) {
+	public static Embedded searchByKeyword(String keyword) throws UnsupportedEncodingException {
 		//https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey={apikey}
-			
-		String URL = URLBaseTicketMasterDiscovery + "keyword=" + keyword ;
+		
+		String encodeKeyword = URLEncoder.encode(keyword,"UTF-8");
+		
+		String URL = URLBaseTicketMasterDiscovery + "keyword=" + encodeKeyword;
 			
 		URL += "&countryCode=";
 				
