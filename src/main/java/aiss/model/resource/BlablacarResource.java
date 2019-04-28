@@ -21,14 +21,17 @@ public class BlablacarResource extends HttpServlet {
 	private static final String _FORMAT = "json";
 	private static final String CUR = "EUR";
 
-
-
 	public static Links_ getTripsWith(String dep, String ar, String date) {
 		
-	
+//		https://public-api.blablacar.com/api/v2/trips
+//		?fn=Paris&tn=London&locale=en_GB&_format=json&cur=EUR
+//				&fc=48.756%7C7.268&tc=48.756%7C7.268&db=2016-09-05&de=2016-09-07&hb=7&he=14
+//				&page=1&seats=1&photo=1&fields=links%2Cprice%2Cpermanent_id
+//				&sort=trip_price&order=desc&limit=50&radius=10&radius_from=5
+//				&radius_to=15&aa=1&blablalines=1&pmin=2&pmax=142'
 
-		String res = URLBaseBlablacarSearch + URLBlablacarTrips + "?&fn=" + dep + "&tn=" + ar + "&de=" + date
-				+ "locale=" + LOCALE + "&" + "_format=" + _FORMAT + "&" + "cur=" + CUR + "key=" + BLABLACAR_API_KEY;
+		String res = URLBaseBlablacarSearch + URLBlablacarTrips + "?fn=" + dep + "&tn=" + ar +"&locale=" + LOCALE +
+				 "&" + "_format=" + _FORMAT + "&" + "cur=" + CUR +"&de=" + date + "&key=" + BLABLACAR_API_KEY;
 
 		log.log(Level.FINE, "Blablacar uri:" + res);
 		ClientResource cr = new ClientResource(res);

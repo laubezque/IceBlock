@@ -1,7 +1,6 @@
 package aiss.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,7 +48,7 @@ public class BlablacarSearchController extends HttpServlet {
 		Links_ l = BlablacarResource.getTripsWith(departurePlace, arrivalPlace, departureDate);
 		Map<String, Object> e = l.getAdditionalProperties();
 
-		if (l != null) {
+		if (!l.equals(null)) {
 
 			rd = request.getRequestDispatcher("/successBusquedaViaje.jsp");
 			request.setAttribute("trips", e);
