@@ -1,0 +1,74 @@
+/* Importación del resto de archivos CSS
+ ========================================================================== */
+ /*@import 'reset.css';
+
+
+/* Estilos generales para toda la web
+ ========================================================================== */
+ 		html{
+            height: 97%;
+        }
+        body{
+            height: 100%;
+        }
+
+        header{
+            position: relative;
+            top: 0%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        .tituloInicio{
+            font-family: 'Pacifico', cursive;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            text-shadow: 1px 1px 5px black;
+            margin: 0%;
+            font-family: 'Pacifico', cursive;
+        }
+        .logo{
+            width: 60px;
+            filter: drop-shadow(1px 1px 1px black);
+            text-size-adjust: 60%;
+            align-items: center;
+            margin-left: 5px;
+        }
+
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            
+        }
+        
+        .calendario{
+        position: absolute;
+        height: 70%;
+        left: 5%;
+        width: 60%;
+        margin-top: 3%;
+        }
+
+        .quickAdd{
+        font-family: 'Pacifico',cursive;
+        position: absolute;
+        height: 10%;
+        width: 20%;
+        bottom: 70%;
+        right: 7%;
+        }
+       
+
+        .delete{
+        font-family: 'Pacifico',cursive;
+        position: absolute;
+        height: 10%;
+        width: 20%;
+        bottom: 40%;
+        right: 7%;   
+        }
