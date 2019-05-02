@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -72,16 +73,20 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		String keyword = request.getParameter("key_word");
 		
 		Embedded event = TicketmasterResource.searchByKeyword(keyword);
+		String eventString = event.getAdditionalProperties().toString();
 		//List<Image> e = event.getImages();
-
+		
 		//split(e);
 		
 
 		// [_embedded, _links, page]
 		
 		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
+		
+		pw.println("Este es el texto que sale -> " + split(eventString) + "<BR>");
+		
 
-		pw.println("URL -> " + Arrays.toString(event.getEvents().toArray()) + "<BR>");
+	//	pw.println("URL -> " + event.getAdditionalProperties() + "<BR>");
 		
 		pw.println("</BODY></HTML>");
 		pw.close();
@@ -89,54 +94,23 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 	}
 
+	private Map<Integer, String> split(String str) {
+		Integer i = 0;
+		return splitAux(str,new HashMap<Integer, String>(),i);
+			}
 
-	private String split(String str,PropiedadesEventosTM var) {
-		String res = "";
-		String[] split = str.split("_embedded="); 
-		res = res + split[1];
-		String[] img = res.split("images=");
-		String[] imagenFrag = img[1].split(", postalCode=");
+	@SuppressWarnings("unused")
+	private Map<Integer, String> splitAux(String str,Map<Integer,String> res,Integer i) {
 		
-		//################################################################################# CodigoPostal  #############################################################################
+		//################################################################################# Parámetros #############################################################################
+		String[] splits = str.split("upcomingEvents=");
 		
-		String[] zonaHorariaFrag = imagenFrag[1].split(", timezone=");
-		String url = zonaHorariaFrag[0];
-		String zonaHoraria = zonaHorariaFrag[1];
-		
-		//################################################################################# Imagenes  #################################################################################
-		String imagen = img[1];
-		String[] camposImagen = imagen.split(",");
-		
-		switch(var) {
-		
-			case IMAGEN_RATIO:
-				String imagenRatio = camposImagen[0].replace("[{", "");
-				res = imagenRatio;
-				break;
-			
-			case IMAGEN_URL:
-				String imagenUrl = camposImagen[1];
-				res = imagenUrl;
-				break;
-			
-			case IMAGEN_WIDTH:
-				String imagenWidth = camposImagen[2];
-				res = imagenWidth;
-				break;
-				
-			case IMAGEN_HEIGHT:
-				String imagenHeight = camposImagen[3];
-				res = imagenHeight;
-				break;
-			
-			case IMAGEN_FALLBACK:
-				String imagenFallback = camposImagen[4].replace("}]", "");
-				res = imagenFallback;
-				break;
+		while(i<splits.length) {
+			res.put(i, "Evento-"+i+"->"+splits[i]);
+			i++;
 		}
-		
-		
-		return zonaHoraria;
+
+		return res;
 		
 	}
 
