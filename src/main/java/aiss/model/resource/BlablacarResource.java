@@ -36,6 +36,7 @@ public class BlablacarResource extends HttpServlet {
 		log.log(Level.FINE, "Blablacar uri:" + res);
 		ClientResource cr = new ClientResource(res);
 		Links_ blSearch = cr.get(Links_.class);
+		System.out.println();
 
 		return blSearch;
 
