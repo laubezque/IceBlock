@@ -5,9 +5,14 @@ import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
 
+import org.restlet.data.Header;
+import org.restlet.engine.header.HeaderConstants;
 import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
+import org.restlet.util.Series;
 
-import aiss.model.blablacar.search.Links_;
+
+import aiss.model.blablacar.search.Trip;
 
 public class BlablacarResource extends HttpServlet {
 
@@ -16,30 +21,53 @@ public class BlablacarResource extends HttpServlet {
 	private static String URLBaseBlablacarSearch = "https://public-api.blablacar.com";
 	private static String URLBlablacarTrips = "/api/v2/trips";
 	private static final Logger log = Logger.getLogger(BlablacarResource.class.getName());
-	private static String IDIOM_CODE = "ES";
+	//private static String IDIOM_CODE = "ES";
 	private static final String LOCALE = "es_ES";
 	private static final String _FORMAT = "json";
 	private static final String CUR = "EUR";
 
-	public static Links_ getTripsWith(String dep, String ar, String date) {
+	
+	
+	public static Trip getTripsWith(String dep, String ar, String date) {
+		String uri = URLBaseBlablacarSearch + URLBlablacarTrips + "?fn=" + dep + "&tn=" + ar +"&locale=" + LOCALE +
+				 "&" + "_format=" + _FORMAT + "&" + "cur=" + CUR +"&de=" + date 
+				 +"&key="+BLABLACAR_API_KEY;
+       ClientResource cr = new ClientResource(uri);
+
+
+	
+		Trip trip = null;
 		
-//		https://public-api.blablacar.com/api/v2/trips
-//		?fn=Paris&tn=London&locale=en_GB&_format=json&cur=EUR
-//				&fc=48.756%7C7.268&tc=48.756%7C7.268&db=2016-09-05&de=2016-09-07&hb=7&he=14
-//				&page=1&seats=1&photo=1&fields=links%2Cprice%2Cpermanent_id
-//				&sort=trip_price&order=desc&limit=50&radius=10&radius_from=5
-//				&radius_to=15&aa=1&blablalines=1&pmin=2&pmax=142'
+		//addHeader(cr, "key", BLABLACAR_API_KEY);
 
-		String res = URLBaseBlablacarSearch + URLBlablacarTrips + "?fn=" + dep + "&tn=" + ar +"&locale=" + LOCALE +
-				 "&" + "_format=" + _FORMAT + "&" + "cur=" + CUR +"&de=" + date + "&key=" + BLABLACAR_API_KEY;
+		try {
+            trip = cr.get(Trip.class);
 
-		log.log(Level.FINE, "Blablacar uri:" + res);
-		ClientResource cr = new ClientResource(res);
-		Links_ blSearch = cr.get(Links_.class);
-		System.out.println();
+        } catch (ResourceException re) {
+            log.warning("Error when retrieving all Events: " + cr.getResponse().getStatus());
+        }
 
-		return blSearch;
+		
+		log.log(Level.FINE, "Blablacar uri:" + uri);
+		
+	
+
+		return trip;
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	  public static void addHeader(ClientResource cr, String headerName, String headerValue) {
+	    Series<Header> headers = (Series<Header>) cr.getRequest().getAttributes()
+	        .get(HeaderConstants.ATTRIBUTE_HEADERS);
+
+	    if (headers == null) {
+	      headers = new Series<Header>(Header.class);
+	     cr.getRequest().getAttributes().put(HeaderConstants.ATTRIBUTE_HEADERS, headers);
+	    }
+		headers.add(headerName, headerValue);
+	}
+
+
 
 }
