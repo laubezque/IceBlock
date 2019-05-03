@@ -9,7 +9,7 @@
 <body>
 	<h1>BLABLACAR</h1>
 	<div id="blablacarSearch">
-		<form id = "blablacarSearch"action="BlablacarSearchController" method="post">
+		<form id = "blablacarSearch"action="BlablacarSearchController" method="get">
 			Enter departure place : <input type="text" name="departurePlace">
 			<BR> Enter arrival place : <input type="text" name="arrivalPlace"> 
 			<BR> Enter date of departure : <input type="date" name="departureDate">

@@ -66,10 +66,13 @@ public class CalendarDeleteController extends HttpServlet {
         	if (success) {
     			req.setAttribute("message", "Se ha borrao");
     			log.log(Level.FINE, "Event with id=" + id + " se ha borrao");
+                req.getRequestDispatcher("/Calendario.jsp").forward(req, resp);
+
     		}
     		else {
     			req.setAttribute("message", "no se ha podio borra");
     			log.log(Level.FINE, "Event with id=" + id + " no se ha borrao");
+                req.getRequestDispatcher("/error.jsp").forward(req, resp);
 
     		}
         } else {
