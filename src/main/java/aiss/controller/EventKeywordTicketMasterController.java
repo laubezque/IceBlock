@@ -73,8 +73,8 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		String keyword = request.getParameter("key_word");
 		
 		Embedded event = TicketmasterResource.searchByKeyword(keyword);
-		String eventString = event.getAdditionalProperties().toString();
-		//List<Image> e = event.getImages();
+		String eventString = event.getEvents().get(0).getImages().get(0).getUrl();
+		
 		
 		//split(e);
 		
@@ -83,7 +83,7 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
 		
-		pw.println("Este es el texto que sale -> " + split(eventString) + "<BR>");
+		pw.println("Este es el texto que sale -> " + eventString + "<BR>");
 		
 
 	//	pw.println("URL -> " + event.getAdditionalProperties() + "<BR>");
@@ -94,24 +94,60 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 	}
 
-	private Map<Integer, String> split(String str) {
+	private Map<Integer,Map< PropiedadesEventosTM,String>> split(String str) {
 		Integer i = 0;
-		return splitAux(str,new HashMap<Integer, String>(),i);
+		return splitAux(str,new HashMap<Integer,Map< PropiedadesEventosTM,String>>(),i);
 			}
 
 	@SuppressWarnings("unused")
-	private Map<Integer, String> splitAux(String str,Map<Integer,String> res,Integer i) {
+	private Map<Integer,Map< PropiedadesEventosTM,String>> splitAux(String str,Map<Integer,Map< PropiedadesEventosTM,String>> res,Integer i) {
 		
 		//################################################################################# Parámetros #############################################################################
 		String[] splits = str.split("upcomingEvents=");
 		
 		while(i<splits.length) {
-			res.put(i, "Evento-"+i+"->"+splits[i]);
+			if(i==0){ 
+				splits[i].replace("{_embedded={events=[", "");
+				
+				
+				
+				res.put(i,extraeId(splits[i]));
+				
+			}else {
+				res.put(i,extraeId(splits[i]));
+			}
+			
 			i++;
 		}
 
 		return res;
 		
+	}
+
+	private Map<PropiedadesEventosTM,String> extraeId(String string) {
+		Map<PropiedadesEventosTM,String> res = new HashMap<>();
+		String[] splits = string.split(", _embedded={venues=[");
+		//+++++++++++++++++++++Se separan los dos primeras grandes clases+++++++++++++++++++++++++++++++
+		String Events = splits[0];
+		String Venues = splits[1];
+		//+++++++++++++++++++++ Extraemos los elementos de Events+++++++++++++++++++++++++++++++
+		
+		//{name=Melendi, type=event, id=Z698xZ2qZadWT, test=false, url=https://www.ticketmaster.es/event/melendi-tickets/16255?language=en-us,locale=en-us
+		
+		String[] elementEvents = Events.split("{name=");
+
+
+	
+		String[] nombreExpans = elementEvents[1].split(", type=");
+		String nombre = nombreExpans[0];
+		
+		String[] typeExpans = elementEvents[1].split(", id=");
+		String id = typeExpans[0];
+		
+		res.put(PropiedadesEventosTM.NOMBRE,nombre);
+		res.put(PropiedadesEventosTM.ID,id);
+		
+		return res;
 	}
 
 

@@ -15,7 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.restlet.ext.jackson.JacksonRepresentation;
+import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
+import org.restlet.ext.json.JsonRepresentation;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.appengine.repackaged.com.google.gson.JsonObject;
 
 import aiss.model.tickermaster.Embedded;
 import aiss.model.tickermaster.Embedded_;
@@ -39,9 +48,9 @@ public class TicketmasterResource extends HttpServlet {
 		return TICKETMASTER_API_KEY;
 	}
       
-	public static Embedded searchByKeyword(String keyword) throws UnsupportedEncodingException {
+	public static Embedded searchByKeyword(String keyword) throws JSONException, IOException {
 		//https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey={apikey}
-		
+		Embedded e = new Embedded();
 		String encodeKeyword = URLEncoder.encode(keyword,"UTF-8");
 		
 		String URL = URLBaseTicketMasterDiscovery + "keyword=" + encodeKeyword;
@@ -55,8 +64,26 @@ public class TicketmasterResource extends HttpServlet {
 		log.log(Level.FINE,"URL : "+ URL );
 		
 		ClientResource tm = new ClientResource(URL);
+		log.log(Level.FINE,"Esto esta petando." + tm.toString());
+		// Modificamos el pom para permitir el uso de JSONObject
+//		JSONObject a = new JsonRepresentation(tm.getResponseEntity()).getJsonObject();
+//		ObjectMapper JSON2Object = new ObjectMapper();
+//		Embedded e = JSON2Object.readValue(a.toString(), Embedded.class);
 		
-		Embedded e = tm.get(Embedded.class);
+		try {
+			
+			Representation response = tm.get();
+			log.log(Level.FINE,"Response---------------------------------------------------------- : "+ response );
+			
+			ObjectMapper JSON2Object = new ObjectMapper();
+			JsonRepresentation b = new JsonRepresentation(response.getText());
+			JSONObject a = b.getJsonObject();
+			e = JSON2Object.readValue(a.get("_embedded").toString(), Embedded.class);
+		}catch (Exception IAE){
+			new IllegalArgumentException("No se han encontrado eventos");
+		}
+		
+		
 		
 		return e;
 		

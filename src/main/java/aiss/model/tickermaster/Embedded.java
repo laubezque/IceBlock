@@ -1,6 +1,7 @@
 
 package aiss.model.tickermaster;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Embedded {
 
     @JsonProperty("events")
-    private List<Event> events = null;
+    private List<Event> events = new ArrayList<Event>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
