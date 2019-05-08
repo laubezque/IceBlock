@@ -36,10 +36,15 @@ public class CalendarQuickAddController extends HttpServlet {
         GoogleCalendarResource gdResource = new GoogleCalendarResource(accessToken);
      
 		String string = req.getParameter("string");
+//		String fecha = req.getParameter("fecha");
+//		String hora = req.getParameter("hora");
+
+		String stringConvertido = string.replaceAll(" ", "%20").replaceAll("/","%2F").replaceAll(":","%3A").trim();
+		
 				
         if (accessToken != null && !"".equals(accessToken)) {
         	
-    		boolean success = gdResource.quickAddEvent(string);
+    		boolean success = gdResource.quickAddEvent(stringConvertido);
  	
         	if (success) {
     			req.setAttribute("message", "Se ha añadido correctamente");
