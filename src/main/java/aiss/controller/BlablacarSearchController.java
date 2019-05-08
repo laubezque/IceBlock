@@ -40,7 +40,7 @@ public class BlablacarSearchController extends HttpServlet {
 		String departurePlace = request.getParameter("departurePlace");
 		String arrivalPlace = request.getParameter("arrivalPlace");
 		String departureDate = request.getParameter("departureDate");
-		RequestDispatcher rd = null;
+		RequestDispatcher rd ;
 
 		//log.log(Level.FINE, "Searching for trips from " + departurePlace + "to" + arrivalPlace + "on" + departureDate);
 
