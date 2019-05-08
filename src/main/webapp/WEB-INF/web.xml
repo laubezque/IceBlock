@@ -34,7 +34,7 @@
     </init-param>
     <init-param>
       <param-name>onSuccess</param-name>
-      <param-value>redirect:/Calendario.jsp</param-value>
+      <param-value>redirect:/vistaInicio.jsp</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>

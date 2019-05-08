@@ -37,7 +37,7 @@
                 <i class="fas fa-times"></i></a>
             <a href="#">Discover</a>
             <a href="#">My future events</a>
-            <a href="#">Calendar</a>
+            <a href="/Calendario.jsp">Calendar</a>
             <a href="#">Home</a>
         </div>
     </div>
