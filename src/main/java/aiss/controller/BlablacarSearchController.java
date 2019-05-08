@@ -49,16 +49,16 @@ public class BlablacarSearchController extends HttpServlet {
 		Trip[] trips = BlablacarResource.getTripsWith(departurePlace, arrivalPlace, departureDate);
 		//Map<String, Object> e = trip.getAdditionalProperties();
 
-//		if (trip!=null) {
-//
-//			rd = request.getRequestDispatcher("/vistaInicio.jsp");
-//			request.setAttribute("trips", trip);
-//
-//		} else {
-//
-//			log.log(Level.SEVERE, "Blablacar object:" + trip);
-//			rd = request.getRequestDispatcher("/error.jsp");
-//		}
+		if (trips != null) {
+
+			rd = request.getRequestDispatcher("/vistaInicio.jsp");
+			request.setAttribute("trips", trips);
+
+		} else {
+
+			log.log(Level.SEVERE, "Blablacar object:" + trips);
+			rd = request.getRequestDispatcher("/error.jsp");
+		}
 //		rd.forward(request, response);
 //		
 		response.setContentType("text/html");

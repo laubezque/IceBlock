@@ -68,7 +68,7 @@
 
 
 			<input type="image" class="imgEvent" STYLE="position:absolute; TOP:150px; LEFT:505px; WIDTH:300px; HEIGHT:150px" 
-				src=<%=request.getAttribute("Foto")%>  >
+				src=<%=request.getAttribute("tablaEventos")%>  >
 
 		</form>
 

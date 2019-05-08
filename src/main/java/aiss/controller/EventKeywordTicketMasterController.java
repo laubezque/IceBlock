@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -73,20 +74,26 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 		String keyword = request.getParameter("key_word");
 		
-		Embedded event = TicketmasterResource.searchByKeyword(keyword);
+		Embedded embOfEvents = TicketmasterResource.searchByKeyword(keyword);
+		if (embOfEvents != null) {
+			Integer tmp = embOfEvents.getEvents().size();
+			if(tmp <= 0 || tmp >= 5) {
+				
+			}else {
+				Map<Integer, List<String>> tablaEventos = getInfoOfEvent(embOfEvents,tmp);
+				request.setAttribute("tablaEventos", tablaEventos);
+			}
+			
+			
+			
+			request.getRequestDispatcher("VistaListaEventos.jsp").forward(request, response);
+
+		} else {
+			// Deberia redirigir a una página de error que explicara que no hay eventos disponibles
+			request.getRequestDispatcher("/error.jsp");
+		}
 		
-		String urlFoto = event.getEvents().get(0).getImages().get(0).getUrl();
-		String NombreEvento = event.getEvents().get(0).getName();
-		String urlAEvento = event.getEvents().get(0).getUrl();
-		String Fecha = event.getEvents().get(0).getDates().toString();
-		
-		
-		request.setAttribute("Foto", urlFoto);
-		request.setAttribute("NombreEvento", NombreEvento);
-		request.setAttribute("URLEvento", urlAEvento);
-		request.setAttribute("Fecha", Fecha);
-		
-		request.getRequestDispatcher("VistaListaEventos.jsp").forward(request, response);
+
 
 		
 //		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
@@ -100,6 +107,36 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 //		pw.close();
 
 		
+	}
+
+	private Map<Integer, List<String>> getInfoOfEvent(Embedded embOfEvents,Integer tmp) {
+		Map<Integer, List<String>> res = new HashMap<Integer,List<String>>();
+		Integer i=0;
+		while(i < tmp) {
+			List<String> lista = new ArrayList<String>();
+			String urlFoto = embOfEvents.getEvents().get(i).getImages().get(0).getUrl();
+			String nombreEvento = embOfEvents.getEvents().get(i).getName();
+			String urlAEvento = embOfEvents.getEvents().get(i).getUrl();
+			String fecha = embOfEvents.getEvents().get(i).getDates().toString();
+			lista.add(urlFoto);
+			lista.add(nombreEvento);
+			lista.add(urlAEvento);
+			lista.add(fecha);
+			
+			res.put(i, lista);
+			
+			i ++;
+		}
+//		String urlFoto = event.getEvents().get(0).getImages().get(0).getUrl();
+//		String NombreEvento = event.getEvents().get(0).getName();
+//		String urlAEvento = event.getEvents().get(0).getUrl();
+//		String Fecha = event.getEvents().get(0).getDates().toString();
+//		
+//		request.setAttribute("Foto", urlFoto);
+//		request.setAttribute("NombreEvento", NombreEvento);
+//		request.setAttribute("URLEvento", urlAEvento);
+//		request.setAttribute("Fecha", Fecha);
+		return res;
 	}
 }
 	

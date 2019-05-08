@@ -65,10 +65,8 @@ public class TicketmasterResource extends HttpServlet {
 		
 		ClientResource tm = new ClientResource(URL);
 		log.log(Level.FINE,"Esto esta petando." + tm.toString());
-		// Modificamos el pom para permitir el uso de JSONObject
-//		JSONObject a = new JsonRepresentation(tm.getResponseEntity()).getJsonObject();
-//		ObjectMapper JSON2Object = new ObjectMapper();
-//		Embedded e = JSON2Object.readValue(a.toString(), Embedded.class);
+		
+		
 		
 		try {
 			
