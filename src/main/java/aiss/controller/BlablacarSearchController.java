@@ -46,36 +46,36 @@ public class BlablacarSearchController extends HttpServlet {
 
 		
 
-		Trip trip = BlablacarResource.getTripsWith(departurePlace, arrivalPlace, departureDate);
+		Trip[] trips = BlablacarResource.getTripsWith(departurePlace, arrivalPlace, departureDate);
 		//Map<String, Object> e = trip.getAdditionalProperties();
 
-		if (trip!=null) {
-
-			rd = request.getRequestDispatcher("/vistaInicio.jsp");
-			request.setAttribute("trips", trip);
-
-		} else {
-
-			log.log(Level.SEVERE, "Blablacar object:" + trip);
-			rd = request.getRequestDispatcher("/error.jsp");
-		}
-		rd.forward(request, response);
+//		if (trip!=null) {
+//
+//			rd = request.getRequestDispatcher("/vistaInicio.jsp");
+//			request.setAttribute("trips", trip);
+//
+//		} else {
+//
+//			log.log(Level.SEVERE, "Blablacar object:" + trip);
+//			rd = request.getRequestDispatcher("/error.jsp");
+//		}
+//		rd.forward(request, response);
 //		
-//		response.setContentType("text/html");
-//		PrintWriter pw = response.getWriter();
-//		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE></HEAD>");
-//		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
-//		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
-//		pw.println("<H2></H2><P>");
-//		pw.println("<UL>\n");
-//
-//		pw.println("Searching for trips from" + departurePlace + "to" + arrivalPlace + "on the date" + departureDate
-//				+ trip.getPrice()  +"<BR>");
-//
-//		pw.println("links  -> " + trip + "<BR>");
-//
-//		pw.println("</BODY></HTML>");
-//		pw.close();
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE></HEAD>");
+		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
+		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
+		pw.println("<H2></H2><P>");
+		pw.println("<UL>\n");
+
+		pw.println("Searching for trips from " + departurePlace + " to " + arrivalPlace + " on the date " + departureDate
+				  +"<BR>");
+
+		pw.println("links  -> " + trips[0].getPermanentId() + "<BR>");
+
+		pw.println("</BODY></HTML>");
+		pw.close();
 
 	}
 
