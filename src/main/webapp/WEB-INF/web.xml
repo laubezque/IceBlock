@@ -91,36 +91,7 @@
     <servlet-name>CalendarDeleteController</servlet-name>
     <url-pattern>/CalendarDeleteController</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>CalendarGetListController</display-name>
-    <servlet-name>CalendarGetListController</servlet-name>
-    <servlet-class>aiss.controller.CalendarGetListController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CalendarGetListController</servlet-name>
-    <url-pattern>/CalendarGetListController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>CalendarGetEventController</display-name>
-    <servlet-name>CalendarGetEventController</servlet-name>
-    <servlet-class>aiss.controller.CalendarGetEventController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CalendarGetEventController</servlet-name>
-    <url-pattern>/CalendarGetEventController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>CalendarUpdateController</display-name>
-    <servlet-name>CalendarUpdateController</servlet-name>
-    <servlet-class>aiss.controller.CalendarUpdateController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CalendarUpdateController</servlet-name>
-    <url-pattern>/CalendarUpdateController</url-pattern>
-  </servlet-mapping>
+ 
   <servlet>
     <description></description>
     <display-name>CalendarQuickAddController</display-name>

@@ -60,6 +60,7 @@ public class GoogleCalendarResource {
         Item newEvent = null;
         try {
             cr = new ClientResource(uri);
+    		cr.setEntityBuffering(true);
             newEvent = cr.post(event, Item.class);
           
         } catch (ResourceException re) {
@@ -69,14 +70,14 @@ public class GoogleCalendarResource {
     }
     
     
-    public Boolean quickAddEvent(String content) { //cambiar FileItem por elemento de ticketMaster
-																// y acabarlo
+    public Boolean quickAddEvent(String content) {
 
     	ClientResource cr = null;
         boolean result = true;
     	try {
-    		cr = new ClientResource(uri + "/quickAdd" + "?access_token=" + access_token);
-    		cr.put(content);
+    		cr = new ClientResource(uri + "/quickAdd" + "?text=" + content + "&access_token=" + access_token);
+    		cr.setEntityBuffering(true);
+    		cr.post(content);
     	} catch (ResourceException re) {
     		log.warning("Error when inserting file: " + cr.getResponse().getStatus());
             result = false;

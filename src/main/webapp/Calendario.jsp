@@ -5,10 +5,14 @@
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://apis.google.com/js/platform.js" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/vistaCalendario.css">
+    <link rel="stylesheet" type="text/css" href="/css/vistaCalendario.css">   
+	<link rel="stylesheet" type="text/js" href="/JavaScript/Scripts.js">
+    
+    
     
 <meta charset="ISO-8859-1">
 <title>Calendario</title>
+
 
 </head>
 <body>
@@ -19,7 +23,20 @@
     </header>
     
     <main class="main">
-        <div class="calendario">
+	<div class="container">
+		<a class="btn" href="/vistaInicio.jsp"> <svg width="277" height="62">
+                    <defs>
+                        <linearGradient id="grad1">
+                            <stop stop-color="white" />
+                            <stop stop-color="white" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="5" y="5" rx="25" fill="none"
+					stroke="url(#grad1)" width="266" height="50"></rect>
+                </svg> <span>Volver al inicio</span>
+		</a>
+	</div>
+	<div class="calendario">
             <iframe src="https://calendar.google.com/calendar/b/1/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=2&amp;bgcolor=%23c0c0c0&amp;src=iceblockproyectoaiss%40gmail.com&amp;color=%231B887A&amp;ctz=Europe%2FMadrid" style="border:solid 1px #777" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>  
         </div>
         <div class="quickAdd">
@@ -28,7 +45,7 @@
             </div>
             <div>
                 <form action="/CalendarQuickAddController" method="post">
-                    <input type="text" Name="string"/>
+                    <input type="text" Name="string" placeholder="evento dd/mm/YYYY hh:mm"/>
                         <div class="bottom_links">
                             <button type="submit" class="button">Crear evento</button>
                         </div>
