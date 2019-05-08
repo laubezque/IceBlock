@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.View;
 
 import org.jboss.resteasy.util.Encode;
 
@@ -62,95 +63,44 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 		
 		
-		response.setContentType("text/html");
-		PrintWriter pw = response.getWriter();
-		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE><meta charset=\"UTF-8\"/></HEAD>");
-		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
-		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
-		pw.println("<H2></H2><P>");
-		pw.println("<UL>\n");
+//		response.setContentType("text/html");
+//		PrintWriter pw = response.getWriter();
+//		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE><meta charset=\"UTF-8\"/></HEAD>");
+//		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
+//		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
+//		pw.println("<H2></H2><P>");
+//		pw.println("<UL>\n");
 		
 		String keyword = request.getParameter("key_word");
 		
 		Embedded event = TicketmasterResource.searchByKeyword(keyword);
-		String eventString = event.getEvents().get(0).getImages().get(0).getUrl();
+		
+		String urlFoto = event.getEvents().get(0).getImages().get(0).getUrl();
+		String NombreEvento = event.getEvents().get(0).getName();
+		String urlAEvento = event.getEvents().get(0).getUrl();
+		String Fecha = event.getEvents().get(0).getDates().toString();
 		
 		
-		//split(e);
+		request.setAttribute("Foto", urlFoto);
+		request.setAttribute("NombreEvento", NombreEvento);
+		request.setAttribute("URLEvento", urlAEvento);
+		request.setAttribute("Fecha", Fecha);
 		
+		request.getRequestDispatcher("VistaListaEventos.jsp").forward(request, response);
 
-		// [_embedded, _links, page]
 		
-		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
-		
-		pw.println("Este es el texto que sale -> " + eventString + "<BR>");
-		
-
-	//	pw.println("URL -> " + event.getAdditionalProperties() + "<BR>");
-		
-		pw.println("</BODY></HTML>");
-		pw.close();
+//		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
+//		
+//		pw.println("Este es el texto que sale -> " + eventString + "<BR>");
+//		
+//
+//		pw.println("URL -> " + event.getAdditionalProperties() + "<BR>");
+//		
+//		pw.println("</BODY></HTML>");
+//		pw.close();
 
 		
 	}
-
-	private Map<Integer,Map< PropiedadesEventosTM,String>> split(String str) {
-		Integer i = 0;
-		return splitAux(str,new HashMap<Integer,Map< PropiedadesEventosTM,String>>(),i);
-			}
-
-	@SuppressWarnings("unused")
-	private Map<Integer,Map< PropiedadesEventosTM,String>> splitAux(String str,Map<Integer,Map< PropiedadesEventosTM,String>> res,Integer i) {
-		
-		//################################################################################# Parámetros #############################################################################
-		String[] splits = str.split("upcomingEvents=");
-		
-		while(i<splits.length) {
-			if(i==0){ 
-				splits[i].replace("{_embedded={events=[", "");
-				
-				
-				
-				res.put(i,extraeId(splits[i]));
-				
-			}else {
-				res.put(i,extraeId(splits[i]));
-			}
-			
-			i++;
-		}
-
-		return res;
-		
-	}
-
-	private Map<PropiedadesEventosTM,String> extraeId(String string) {
-		Map<PropiedadesEventosTM,String> res = new HashMap<>();
-		String[] splits = string.split(", _embedded={venues=[");
-		//+++++++++++++++++++++Se separan los dos primeras grandes clases+++++++++++++++++++++++++++++++
-		String Events = splits[0];
-		String Venues = splits[1];
-		//+++++++++++++++++++++ Extraemos los elementos de Events+++++++++++++++++++++++++++++++
-		
-		//{name=Melendi, type=event, id=Z698xZ2qZadWT, test=false, url=https://www.ticketmaster.es/event/melendi-tickets/16255?language=en-us,locale=en-us
-		
-		String[] elementEvents = Events.split("{name=");
-
-
-	
-		String[] nombreExpans = elementEvents[1].split(", type=");
-		String nombre = nombreExpans[0];
-		
-		String[] typeExpans = elementEvents[1].split(", id=");
-		String id = typeExpans[0];
-		
-		res.put(PropiedadesEventosTM.NOMBRE,nombre);
-		res.put(PropiedadesEventosTM.ID,id);
-		
-		return res;
-	}
-
-
 }
 	
 	

@@ -78,9 +78,13 @@ public class TicketmasterResource extends HttpServlet {
 			ObjectMapper JSON2Object = new ObjectMapper();
 			JsonRepresentation b = new JsonRepresentation(response.getText());
 			JSONObject a = b.getJsonObject();
+			
 			e = JSON2Object.readValue(a.get("_embedded").toString(), Embedded.class);
+			
 		}catch (Exception IAE){
+			
 			new IllegalArgumentException("No se han encontrado eventos");
+			
 		}
 		
 		
