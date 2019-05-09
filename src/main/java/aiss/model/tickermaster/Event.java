@@ -30,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class Event {
 
+	@JsonProperty("firstURLImage")
+    private String firstURLImage;
     @JsonProperty("name")
     private String name;
     @JsonProperty("type")
@@ -209,6 +211,10 @@ public class Event {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+    @JsonAnyGetter
+    public String getFirstURLImage() {
+        return images.get(3).getUrl();
     }
 
 }

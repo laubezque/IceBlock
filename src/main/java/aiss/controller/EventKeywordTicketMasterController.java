@@ -77,12 +77,10 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		Embedded embOfEvents = TicketmasterResource.searchByKeyword(keyword);
 		if (embOfEvents != null) {
 			Integer tmp = embOfEvents.getEvents().size();
-			if(tmp <= 0 || tmp >= 5) {
-				
-			}else {
-				Map<Integer, List<String>> tablaEventos = getInfoOfEvent(embOfEvents,tmp);
-				request.setAttribute("tablaEventos", tablaEventos);
-			}
+			
+			List<Event> tablaEventos = getInfoOfEvent(embOfEvents,tmp);
+			request.setAttribute("tablaEventos", tablaEventos);
+			
 			
 			
 			
@@ -109,21 +107,15 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 	}
 
-	private Map<Integer, List<String>> getInfoOfEvent(Embedded embOfEvents,Integer tmp) {
-		Map<Integer, List<String>> res = new HashMap<Integer,List<String>>();
+	private List<Event> getInfoOfEvent(Embedded embOfEvents,Integer tmp) {
+		List<Event> res = new ArrayList<>();
 		Integer i=0;
+		if (tmp > 4) {
+			tmp=4;
+					};
 		while(i < tmp) {
-			List<String> lista = new ArrayList<String>();
-			String urlFoto = embOfEvents.getEvents().get(i).getImages().get(0).getUrl();
-			String nombreEvento = embOfEvents.getEvents().get(i).getName();
-			String urlAEvento = embOfEvents.getEvents().get(i).getUrl();
-			String fecha = embOfEvents.getEvents().get(i).getDates().toString();
-			lista.add(urlFoto);
-			lista.add(nombreEvento);
-			lista.add(urlAEvento);
-			lista.add(fecha);
 			
-			res.put(i, lista);
+			res.add(embOfEvents.getEvents().get(i));
 			
 			i ++;
 		}

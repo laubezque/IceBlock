@@ -1,5 +1,6 @@
 <%@page import="aiss.controller.EventKeywordTicketMasterController"%>
 <%@page import="aiss.model.resource.TicketmasterResource"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -64,13 +65,28 @@
 		</b>
 	</div>
 	<div>
-		<form action="OpcionesEvento.jsp" method="GET">
+	
 
+			<table>
+				<tr>
+					
+					<th>Nombre artista</th>
+					
+					
+					<th>Id</th>
+					<th>UrlImagen</th>
+				</tr>
+				<c:forEach items="${tablaEventos}" var="event">
 
-			<input type="image" class="imgEvent" STYLE="position:absolute; TOP:150px; LEFT:505px; WIDTH:300px; HEIGHT:150px" 
-				src=<%=request.getAttribute("tablaEventos")%>  >
+					<tr>
+						<td>${event.name}</td>
+						<td>${event.id}</td>
+						<td><img class="imgBackground" src="${event.firstURLImage}"></td>
+					</tr>
 
-		</form>
+				</c:forEach>
+			</table>
+			
 
 
 	</div>
