@@ -1,8 +1,7 @@
 <%@page import="aiss.controller.EventKeywordTicketMasterController"%>
 <%@page import="aiss.model.resource.TicketmasterResource"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html ; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +11,10 @@
 <link href="https://apis.google.com/js/platform.js" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/css/vistaCalendario.css">
 <link rel="stylesheet" type="text/css" href="2.page.css">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" type="text/css" href="menu15.css">
 <link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
 
-<meta charset="ISO-8859-1">
 
 <title>Eventos IceBlock</title>
 
@@ -33,11 +30,6 @@
 </script>
 </head>
 <body>
-
-
-	<%--     <main class="main">
-        <img class="imgEvent" src=<%= request.getAttribute("Foto") %>>
-    </main> --%>
 
 	<div id="content">
 		<span class="slide"> <a href="#" onclick="openSlideMenu()">
@@ -65,30 +57,19 @@
 		</b>
 	</div>
 	<div>
-	
-
 			<table>
-				<tr>
-					
-					<th>Nombre artista</th>
-					
-					
-					<th>Id</th>
-					<th>UrlImagen</th>
+				<tr>					
+					<th></th>
 				</tr>
 				<c:forEach items="${tablaEventos}" var="event">
-
 					<tr>
-						<td>${event.name}</td>
-						<td>${event.id}</td>
 						<td><img class="imgBackground" src="${event.firstURLImage}"></td>
 					</tr>
-
 				</c:forEach>
 			</table>
-			
-
-
+	</div>
+	<div class="cuadrado">
+		<a>22</a>
 	</div>
 
 </body>
