@@ -3,7 +3,13 @@ body {
 	font-family: sans-serif;
 	overflow-x: hidden;
 }
-
+.rect {
+     width: 500px; 
+     height: 100px; 
+     border: 3px solid #555;
+     background: #428bca;
+	 left: 50%;
+}
 .nav {
 	height: 100%;
 	width: 0;

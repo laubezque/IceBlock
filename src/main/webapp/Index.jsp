@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,7 @@
 	
 	
 
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Iceblock</title>
 </head>
 <body>
@@ -50,7 +50,7 @@
                     </defs>
                     <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
                 </svg>
-              <span>Iniciar sesión</span>
+              <span>Iniciar sesiÃ³n</span>
             </a>
         </div>  
     </main>

@@ -29,9 +29,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "_embedded"
 })
 public class Event {
-
+	
+	//Añadidos------------------------
+	@JsonProperty("dates2Hour")
+	private Dates dates2Hour;
+	@JsonProperty("dates2Date")
+	private Dates dates2Date;
 	@JsonProperty("firstURLImage")
     private String firstURLImage;
+	//---------------------------------
     @JsonProperty("name")
     private String name;
     @JsonProperty("type")
@@ -214,7 +220,15 @@ public class Event {
     }
     @JsonAnyGetter
     public String getFirstURLImage() {
-        return images.get(3).getUrl();
+        return images.get(1).getUrl();
+    }
+    @JsonProperty("dates2Date")
+    public String getDates2Date() {
+        return dates.getStart().getLocalDate();
+    }
+    @JsonProperty("dates2Hour")
+    public String getDates2Hour() {
+        return dates.getStart().getLocalTime();
     }
 
 }

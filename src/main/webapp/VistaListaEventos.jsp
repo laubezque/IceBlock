@@ -56,20 +56,28 @@
 			data-text="U">U</span> <span data-text="T">T</span>
 		</b>
 	</div>
+	<div class = "rect">
+							
+	</div>
 	<div>
+	
 			<table>
 				<tr>					
-					<th></th>
+					<th>Fecha</th>
+					<th>Hora inicio</th>
+					<th>Nombre artista</th>
+					<th>Localización</th>
+
 				</tr>
 				<c:forEach items="${tablaEventos}" var="event">
 					<tr>
-						<td><img class="imgBackground" src="${event.firstURLImage}"></td>
+							<td>${event.dates2Date}</td>	
+							<td>${event.dates2Hour}</td>
+							<td>${event.name}</td>	
+							<td>${event.locale}</td>					
 					</tr>
 				</c:forEach>
 			</table>
-	</div>
-	<div class="cuadrado">
-		<a>22</a>
 	</div>
 
 </body>
