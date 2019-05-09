@@ -42,6 +42,8 @@ public class CalendarDeleteController extends HttpServlet {
 	    		else {
 	    			req.setAttribute("message", "no se ha podio borra");
 	    			log.log(Level.FINE, "Event with id=" + id + " no se ha borrao");
+	                req.getRequestDispatcher("/error.jsp").forward(req, resp);
+
 	    		}
 	        } else {
 	            log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");

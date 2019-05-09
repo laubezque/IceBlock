@@ -7,10 +7,12 @@
 	<link rel="stylesheet" type="text/css" href="/css/vistaPrincipal.css">
 	<link rel="stylesheet" type="text/js" href="/JavaScript/Scripts.js">
 	<link href="https://apis.google.com/js/platform.js" rel="stylesheet">
+	<link rel="shortcut icon" href="imagenes/icono.ico" />
+	
 	
 
 <meta charset="ISO-8859-1">
-<title>Inicio</title>
+<title>Iceblock</title>
 </head>
 <body>
 

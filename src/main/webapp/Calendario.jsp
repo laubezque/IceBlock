@@ -7,11 +7,13 @@
     <link href="https://apis.google.com/js/platform.js" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/vistaCalendario.css">   
 	<link rel="stylesheet" type="text/js" href="/JavaScript/Scripts.js">
+	<link rel="shortcut icon" href="imagenes/icono.ico" />
+	
     
     
     
 <meta charset="ISO-8859-1">
-<title>Calendario</title>
+<title>Iceblock / Calendario</title>
 
 
 </head>
@@ -45,7 +47,7 @@
             </div>
             <div>
                 <form action="/CalendarQuickAddController" method="post">
-                    <input type="text" Name="string" placeholder="evento dd/mm/YYYY hh:mm"/>
+                    <input type="text" Name="string" placeholder="evento hh:mm d/mm/YYYY "/>
                         <div class="bottom_links">
                             <button type="submit" class="button">Crear evento</button>
                         </div>

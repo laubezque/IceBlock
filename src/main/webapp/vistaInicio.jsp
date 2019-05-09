@@ -4,12 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-  <title>page</title>
-  <link rel="stylesheet" type="text/css" href="2.page.css">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-  <title>menu</title>
-  <link rel="stylesheet" type="text/css" href="menu15.css">
   <link rel="stylesheet" type = "text/css" href = "/css/vistaInicio.css">
+  <link rel="shortcut icon" href="imagenes/icono.ico" />
+  
+  
+   <title>Iceblock / Inicio</title>
+  
+  
   <script type="text/javascript">
         function openSlideMenu(){
             document.getElementById("menu").style.width = "250px";
