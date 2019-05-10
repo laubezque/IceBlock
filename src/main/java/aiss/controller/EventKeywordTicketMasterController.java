@@ -110,8 +110,8 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 	private List<Event> getInfoOfEvent(Embedded embOfEvents,Integer tmp) {
 		List<Event> res = new ArrayList<>();
 		Integer i=0;
-		if (tmp > 4) {
-			tmp=4;
+		if (tmp > 10) {
+			tmp=10;
 					};
 		while(i < tmp) {
 			

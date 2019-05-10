@@ -74,7 +74,7 @@
 							<td>${event.dates2Date}</td>	
 							<td>${event.dates2Hour}</td>
 							<td>${event.name}</td>	
-							<td>${event.locale}</td>					
+							<td>${event.embedded.firstVenues.city.name}</td>					
 					</tr>
 				</c:forEach>
 			</table>

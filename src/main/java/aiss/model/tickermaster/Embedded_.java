@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class Embedded_ {
 
+	@JsonProperty("firstVenues")
+    private Venue_ firstVenues;
     @JsonProperty("venues")
     private List<Venue_> venues = null;
     @JsonProperty("attractions")
@@ -54,5 +56,8 @@ public class Embedded_ {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
-
+    @JsonProperty("firstVenues")
+    public Venue_ getFirstVenues() {
+        return venues.get(0);
+    }
 }
