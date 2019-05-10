@@ -37,18 +37,14 @@
 		</a>
 		</span>
 		<div class="nav" id="menu">
-			<a href="#" class="close" onclick="closeSlideMenu()"> <i
-				class="fas fa-times"></i></a> <a href="#">Discover</a> <a href="#">My
-				future events</a> <a href="/Calendario.jsp">Calendar</a> <a href="#">Home</a>
+			<a href="#" class="close" onclick="closeSlideMenu()"> 
+			<i class="fas fa-times"></i></a> 
+			<a href="#">Discover</a> 
+			<a href="/Calendario.jsp">Calendar</a> 
+			<a href="/vistaInicio.jsp">Home</a>
 		</div>
 	</div>
-	<div>
-		<ul>
-			<li><a href="#">SPORTS</a></li>
-			<li><a href="#">CONCERTS</a></li>
-			<li><a href="#">OTHERS</a></li>
-		</ul>
-	</div>
+	
 
 	<div>
 		<b href="#"> <span data-text="L">L</span> <span data-text="O">O</span>
@@ -56,12 +52,11 @@
 			data-text="U">U</span> <span data-text="T">T</span>
 		</b>
 	</div>
-	<div class = "rect">
-							
-	</div>
-	<div>
+
+	<div class=tabla> 
 	
 			<table>
+			<div class="indice">
 				<tr>					
 					<th>Fecha</th>
 					<th>Hora inicio</th>
@@ -69,14 +64,26 @@
 					<th>Localización</th>
 
 				</tr>
+				</div>
+				<div class="eventos">
 				<c:forEach items="${tablaEventos}" var="event">
 					<tr>
-							<td>${event.dates2Date}</td>	
-							<td>${event.dates2Hour}</td>
-							<td>${event.name}</td>	
-							<td>${event.embedded.firstVenues.city.name}</td>					
+						<td>${event.dates2Date}</td>
+						<td>${event.dates2Hour}</td>
+						<td>${event.name}</td>
+						<td>${event.embedded.firstVenues.city.name}</td>
+
+						<td><form action="CalendarInsertController" method="post">
+
+
+								<button name="subject" type="submit" value=${event.id}>HTML</button>
+
+
+							</form></td>
+
 					</tr>
 				</c:forEach>
+				</div>
 			</table>
 	</div>
 
