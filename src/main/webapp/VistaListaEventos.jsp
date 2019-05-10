@@ -9,11 +9,8 @@
 <link href="https://fonts.googleapis.com/css?family=Pacifico"
 	rel="stylesheet">
 <link href="https://apis.google.com/js/platform.js" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/vistaCalendario.css">
-<link rel="stylesheet" type="text/css" href="2.page.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" type="text/css" href="menu15.css">
-<link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
+<link rel="stylesheet" type="text/css" href="/css/vistaEvento.css">
 
 
 <title>Eventos IceBlock</title>
@@ -30,7 +27,7 @@
 </script>
 </head>
 <body>
-
+<div class="parte1">
 	<div id="content">
 		<span class="slide"> <a href="#" onclick="openSlideMenu()">
 				<i class="fas fa-bars"></i>
@@ -46,79 +43,36 @@
 	</div>
 	
 
-	<div>
+	<div class="logout">
 		<b href="#"> <span data-text="L">L</span> <span data-text="O">O</span>
 			<span data-text="G">G</span> <span data-text="O">O</span> <span
 			data-text="U">U</span> <span data-text="T">T</span>
 		</b>
-	</div>
+  </div>
+</div>
+<table class="indice">
+<tr >					
+					<th class="indice1">Fecha</th>
+					<th class="indice2">Hora</th>
+					<th class="indice3">Nombre</th>
+          <th class="indice4">Localización</th>
+          <th class="indice5"></th>
+        </tr>
+        </table>
+  <table class="parte2">
+				
+          <c:forEach items="${tablaEventos}" var="event">
+					<tr class="eventos" >
+						<td class="eventos1">${event.dates2Date}</td>
+						<td class="eventos2">${event.dates2Hour}</td>
+						<td class="eventos3">${event.name}</td>
+						<td class="eventos4">${event.embedded.firstVenues.city.name}</td>
+						<td class="eventos5"><form action="CalendarInsertController" method="post">
+							<button name="subject" type="submit" value=${event.id}>HTML</button>
+              </form></td>
+          </tr>
+        </c:forEach>
 
-	<div class=tabla> 
-	
-			<table>
-			<div class="indice">
-				<tr>					
-					<th>Fecha</th>
-					<th>Hora inicio</th>
-					<th>Nombre artista</th>
-					<th>Localización</th>
-
-				</tr>
-				</div>
-				<div class="eventos">
-				<c:forEach items="${tablaEventos}" var="event">
-					<tr>
-						<td>${event.dates2Date}</td>
-						<td>${event.dates2Hour}</td>
-						<td>${event.name}</td>
-						<td>${event.embedded.firstVenues.city.name}</td>
-
-						<td><form action="CalendarInsertController" method="post">
-
-
-								<button name="subject" type="submit" value=${event.id}>HTML</button>
-
-
-							</form></td>
-
-					</tr>
-				</c:forEach>
-				</div>
-			</table>
-	</div>
-
+	</table>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
