@@ -43,20 +43,31 @@ public class CalendarInsertController extends HttpServlet {
 					
 			
 			Event evento = TicketmasterResource.searchById(eventID);
-			
-			Dates date = evento.getDates();
-			Start date2 = date.getStart();
-			String date3 = date2.getDateTime();
-			String fechaInicio = date3;
+//			log.info("----------------------------------" + evento.getEmbedded().getFirstVenues().getCity().getName());
+
+
+//			Start date2 = date.getStart();
+//			String date3 = date2.getDateTime();
+//			String fechaInicio = date3;
+//			String fecha = evento.getDates2Date();
+//			String hora = evento.getDates2Hour();
+//			String fechaInicio = fecha + "T" + hora;
 
 			
-//			String fechaInicio = evento.getDates().getStart().getDateTime();
+			String fechaInicio = evento.getDates().getStart().getDateTime();
+			log.info("----------------------------------" + fechaInicio);
+
 			
 			
 			String timeZone = evento.getDates().getTimezone();
 			String location = evento.getEmbedded().getFirstVenues().getCity().getName();
 			String description = evento.getUrl();
 			String summary = evento.getName();
+			log.info("----------------------------------" + timeZone);
+			log.info("----------------------------------" + location);
+			log.info("----------------------------------" + description);
+			log.info("----------------------------------" + summary);
+
 
 
 
