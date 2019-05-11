@@ -60,6 +60,8 @@
 					<th>Date</th>
 					<th>Price</th>
 					<th>Seats Left</th>
+					<th>Link</th>
+					
 				</tr>
 			</thead>
 		<!-- 	<div id="pie">
@@ -89,8 +91,10 @@
 					<td>${trip.departurePlace.cityName}</td>
 					<td>${trip.arrivalPlace.cityName}</td>
 					<td>${trip.departureDate}</td>
-					<td>${trip.price.value}</td>
+					<td>${trip.price.value} ${trip.price.currency}</td>
 					<td>${trip.seatsLeft}</td>
+					<td><a href="${trip.links.front}">buy</a></td>
+					
 				</tr>
 				
 			<!-- 	<tr class="alt">
