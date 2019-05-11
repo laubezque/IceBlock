@@ -95,9 +95,10 @@ public class TicketmasterResource extends HttpServlet {
         //https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey=%7Bapikey%7D
         Event e = new Event();
 
-        String URL = URLBaseTicketMasterDetails + id;
+//        https://app.ticketmaster.com/discovery/v2/events?apikey=nwHQ0avEGxWu0artoxru0IYIA6GxV707&id=Z698xZ2qZadWT
+        String URL = "https://app.ticketmaster.com/discovery/v2/events";
 
-        URL += "&apikey="+TICKETMASTER_API_KEY ;
+        URL += "?apikey="+TICKETMASTER_API_KEY + "&id=" + id;
 
         log.log(Level.FINE,"URL : "+ URL );
 
@@ -115,7 +116,7 @@ public class TicketmasterResource extends HttpServlet {
             JsonRepresentation b = new JsonRepresentation(response.getText());
             JSONObject a = b.getJsonObject();
 
-            e = JSON2Object.readValue(a.get("event").toString(), Event.class);
+            e = JSON2Object.readValue(a.get("_embedded").toString(), Embedded.class).getEvents().get(0);
 
         }catch (Exception IAE){
 

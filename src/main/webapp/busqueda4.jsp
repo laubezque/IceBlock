@@ -35,11 +35,11 @@
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
-  <% String variable = request.getAttribute("resultado").toString(); %>
+  String variable = request.getAttribute("resultado").toString();
+	log.info("----------------------------------" + variable);
+
   function execute() {
-    return gapi.client.calendar.events.insert(variable
-    		)
-        .then(function(response) {
+    return gapi.client.calendar.events.insert(variable).then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
               },
