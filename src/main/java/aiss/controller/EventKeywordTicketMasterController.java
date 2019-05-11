@@ -43,7 +43,7 @@ public class EventKeywordTicketMasterController extends HttpServlet {
      */
     public EventKeywordTicketMasterController() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -59,21 +59,10 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		
 		
-		
-//		response.setContentType("text/html");
-//		PrintWriter pw = response.getWriter();
-//		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE><meta charset=\"UTF-8\"/></HEAD>");
-//		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
-//		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
-//		pw.println("<H2></H2><P>");
-//		pw.println("<UL>\n");
-		
+		// Tomamos el parametro keyword y llamamos ha searchByKeyword nos devuelve un embedded.
 		String keyword = request.getParameter("key_word");
-		
 		Embedded embOfEvents = TicketmasterResource.searchByKeyword(keyword);
 		if (embOfEvents != null) {
 			Integer tmp = embOfEvents.getEvents().size();
@@ -90,21 +79,7 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 			// Deberia redirigir a una página de error que explicara que no hay eventos disponibles
 			request.getRequestDispatcher("/error.jsp");
 		}
-		
 
-
-		
-//		pw.println("Has buscado la palabra -> " + keyword + "<BR>");
-//		
-//		pw.println("Este es el texto que sale -> " + eventString + "<BR>");
-//		
-//
-//		pw.println("URL -> " + event.getAdditionalProperties() + "<BR>");
-//		
-//		pw.println("</BODY></HTML>");
-//		pw.close();
-
-		
 	}
 
 	private List<Event> getInfoOfEvent(Embedded embOfEvents,Integer tmp) {
@@ -119,15 +94,7 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 			
 			i ++;
 		}
-//		String urlFoto = event.getEvents().get(0).getImages().get(0).getUrl();
-//		String NombreEvento = event.getEvents().get(0).getName();
-//		String urlAEvento = event.getEvents().get(0).getUrl();
-//		String Fecha = event.getEvents().get(0).getDates().toString();
-//		
-//		request.setAttribute("Foto", urlFoto);
-//		request.setAttribute("NombreEvento", NombreEvento);
-//		request.setAttribute("URLEvento", urlAEvento);
-//		request.setAttribute("Fecha", Fecha);
+
 		return res;
 	}
 }

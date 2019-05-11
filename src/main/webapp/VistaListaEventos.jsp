@@ -67,10 +67,20 @@
 						<td class="eventos2">${event.dates2Hour}</td>
 						<td class="eventos3">${event.name}</td>
 						<td class="eventos4">${event.embedded.firstVenues.city.name}</td>
-						<td class="eventos5"><form action="CalendarInsertController" method="post">
-							<button name="subject" type="submit" value=${event.id}>HTML</button>
-              </form></td>
+						<td class="eventos5">
+							<form action="CalendarInsertController" method="get">
+							<input type="hidden" name="event_ID" value="${event.id}" />
+							
+							<button type="submit" >Go</button>
+						</form></td>
+								
+								
+								
+             				 
+             			
+             			
           </tr>
+          
         </c:forEach>
 
 	</table>

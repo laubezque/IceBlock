@@ -28,28 +28,31 @@ public class CalendarInsertController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		// Request data
-		string fecha = req.getParameter(name);
+//		string fecha = req.getParameter(name);
+				String eventID = (String) req.getParameter("event_ID");
+				 log.info("----------------------------------" + eventID);
+				System.out.println(eventID);
 		        String accessToken = (String) req.getSession().getAttribute("GoogleCalendar-token");
-		        
-		        Event event = new Event();
-		        event.setStart(new EventDateTime().setDateTime(start));
-		        event.setEnd(new EventDateTime().setDateTime(end));
-		        event.setSummary(eventEntity.getSummary());
-		        event.setLocation(location);
-		        event.setDescription(description);
-
-		        Item Event = null;
+//		        
+//		        Event event = new Event();
+//		        event.setStart(new EventDateTime().setDateTime(start));
+//		        event.setEnd(new EventDateTime().setDateTime(end));
+//		        event.setSummary(eventEntity.getSummary());
+//		        event.setLocation(location);
+//		        event.setDescription(description);
+//
+//		        Item Event = null;
 						
 		        if (accessToken != null && !"".equals(accessToken)) {
 
 		            GoogleCalendarResource gdResource = new GoogleCalendarResource(accessToken);
 
-		            if (Event != null) {
-			            Item EventoInsertado = gdResource.insertEvent(Event);
-		            } else {
-		                log.info("The files returned are null... probably your token has experied. Redirecting to OAuth servlet.");
-		                req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
-		            }
+//		            if (Event != null) {
+//			            Item EventoInsertado = gdResource.insertEvent(Event);
+//		            } else {
+//		                log.info("The files returned are null... probably your token has experied. Redirecting to OAuth servlet.");
+//		                req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
+//		            }
 		        } else {
 		            log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");
 		            req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
