@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.blablacar.search.Trip;
 import aiss.model.resource.BlablacarResource;
+import aiss.model.resource.TicketmasterResource;
 import aiss.model.tickermaster.Embedded;
 import aiss.model.tickermaster.Event;
 
@@ -40,9 +41,15 @@ public class BlablacarSearchController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String eventID = (String) request.getParameter("event_ID");
+		log.info("----------------------------------" + eventID);
+				
+		
+		Event evento = TicketmasterResource.searchById(eventID);
 
 		String departurePlace = request.getParameter("departurePlace");
-		String arrivalPlace = request.getParameter("arrivalPlace");
+		String arrivalPlace = evento.getEmbedded().getFirstVenues().getCity().getName();
 		String departureDate = request.getParameter("departureDate");
 		RequestDispatcher rd;
 

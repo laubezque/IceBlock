@@ -68,8 +68,9 @@
 						<td class="eventos3">${event.name}</td>
 						<td class="eventos4">${event.embedded.firstVenues.city.name}</td>
 						<td class="eventos5">
-							<form action="CalendarInsertController" method="post">
-							<input type="hidden" name="event_ID" value="${event.id}" />							
+							<form action="OpcionesEvento.jsp" method="post">
+							<input type="hidden" name="event_ID" value="${event.id}" />	
+							<input type="hidden" name="event_firstURLImage" value="${event.firstURLImage}" />							
 							<button type="submit" >Go</button>
 						</form></td>
           			</tr>       

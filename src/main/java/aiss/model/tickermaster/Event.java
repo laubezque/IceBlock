@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Event {
 	
 	//Añadidos------------------------
+
 	@JsonProperty("dates2Hour")
 	private Dates dates2Hour;
 	@JsonProperty("dates2Date")
@@ -230,5 +231,7 @@ public class Event {
     public String getDates2Hour() {
         return dates.getStart().getLocalTime();
     }
+    
+ 
 
 }

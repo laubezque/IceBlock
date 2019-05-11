@@ -56,7 +56,7 @@
 	</div>
 	<div id="foto">
 		<img
-			src="https://www.masquenegocio.com/wp-content/uploads/2018/03/evento-concierto-874x492.jpg"
+			src="${event.firstURLImage}"
 			height="140px" width="200px">
 	</div>
 
@@ -65,12 +65,25 @@
 		<div id="botonticket">
 			<a href="#" STYLE height="50px" width="50px" class="myButton">tickets</a>
 		</div>
-		<div id="botontrips">
-			<a href="#" class="myButton">trips</a>
-		</div>
+		
 		<div id="botonaddtocalendar">
 			<a href="#" class="myButton">add to calendar</a>
 		</div>
+	
+		
+		<div id="botontrips">
+		<form id = "blablacarSearch"action="BlablacarSearchController" method="get">
+			Enter departure place : <input type="text" name="departurePlace">
+			<input type="hidden" name="arrivalPlace" value="${event.embedded.firstVenues.city.name}" />
+			 Enter date of departure : <input type="date" name="departureDate">
+			<input type="submit" name = "blablacarSearchBtn" title = "search" value = "search" />
+			<!--  <input type="submit" name = "blablacarSearchBtn" title = "search trips" value = "search"
+			  href="#" class="myButton" /> -->
+
+		</form>
+	</div>
+		
+		
 	</div>
 
 
