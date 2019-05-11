@@ -16,14 +16,9 @@
 <title>Iceblock / Calendario</title>
 
 <script src="https://apis.google.com/js/api.js"></script>
-<script>
-  /**
-   * Sample JavaScript code for calendar.events.insert
-   * See instructions for running APIs Explorer code samples locally:
-   * https://developers.google.com/explorer-help/guides/code_samples#javascript
-   */
 
-  function authenticate() {
+<script>
+function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events"})
         .then(function() { console.log("Sign-in successful"); },
@@ -35,11 +30,9 @@
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
-  String variable = request.getAttribute("resultado").toString();
-	log.info("----------------------------------" + variable);
-
   function execute() {
-    return gapi.client.calendar.events.insert(variable).then(function(response) {
+    return gapi.client.calendar.events.insert({"calendarId": "primary","resource": "{"end": {"dateTime": "2019-06-01T20:00:00Z","timeZone": "Europe/Madrid"},"start": {"dateTime": "2019-06-01T20:00:00Z","timeZone": "Europe/Madrid"},"description": "https://www.ticketmaster.es/event/melendi-tickets/16255?language=en-us" , "location": "Cáceres","summary": "Melendi"}})
+        .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
               },
@@ -48,7 +41,9 @@
   gapi.load("client:auth2", function() {
     gapi.auth2.init({client_id: "111140053841-fdv5sqcpf9jamk31aiubeldm8gbkv8dg.apps.googleusercontent.com"});
   });
+
 </script>
+
 
 
 
@@ -65,21 +60,9 @@
     
     <button onclick="authenticate().then(loadClient)">authorize and load</button>
 	<button onclick="execute()">execute</button>
-    
-	<div class="container">
-		<a class="btn" href="/vistaInicio.jsp"> <svg width="277" height="62">
-                    <defs>
-                        <linearGradient id="grad1">
-                            <stop stop-color="white" />
-                            <stop stop-color="white" />
-                        </linearGradient>
-                    </defs>
-                    <rect x="5" y="5" rx="25" fill="none"
-					stroke="url(#grad1)" width="266" height="50"></rect>
-                </svg> <span>Volver al inicio</span>
-		</a>
-	</div>
-	    </main>
+	<p>${melendi}</p>
+   
+</main>
 
 </body>
 </html>

@@ -70,21 +70,24 @@ public class CalendarInsertController extends HttpServlet {
 
 
 
-
 			
-			String res ="{\"end\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
+			
+			String res = "{\"calendarId\": \"primary\"," +
+				      "\"resource\": \"{\"end\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
 	                "\"start\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
 	                "\"description\": \""+ description +"\" , "+
 	                "\"location\": \""+ location +"\","+
-	                "\"summary\": \""+ summary +"\"}\"";
+	                "\"summary\": \""+ summary +"\"}}";
 			
-			req.setAttribute("resultado", res);
+//			req.setAttribute("resultado", res);
+			req.getSession().setAttribute("melendi", res);
 							
 			        if (accessToken != null && !"".equals(accessToken)) {
 
 
 			            if (evento != null) {
-			            	req.getRequestDispatcher("/busqueda4.jsp").forward(req, resp);
+//			            	req.getRequestDispatcher("/busqueda4.jsp").forward(req, resp);
+			            	resp.sendRedirect("/busqueda4.jsp");
 			            } else {
 			                log.info("The files returned are null... probably your token has experied. Redirecting to OAuth servlet.");
 			                req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
