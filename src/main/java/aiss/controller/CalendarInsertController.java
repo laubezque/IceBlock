@@ -73,13 +73,12 @@ public class CalendarInsertController extends HttpServlet {
 			
 			
 			String res = "{\"calendarId\": \"primary\"," +
-				      "\"resource\": \"{\"end\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
+				      "\"resource\": {\"end\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
 	                "\"start\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
 	                "\"description\": \""+ description +"\" , "+
 	                "\"location\": \""+ location +"\","+
 	                "\"summary\": \""+ summary +"\"}}";
 			
-//			req.setAttribute("resultado", res);
 			req.getSession().setAttribute("melendi", res);
 							
 			        if (accessToken != null && !"".equals(accessToken)) {

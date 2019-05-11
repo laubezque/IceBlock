@@ -31,7 +31,7 @@ function authenticate() {
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
-    return gapi.client.calendar.events.insert({"calendarId": "primary","resource": "{"end": {"dateTime": "2019-06-01T20:00:00Z","timeZone": "Europe/Madrid"},"start": {"dateTime": "2019-06-01T20:00:00Z","timeZone": "Europe/Madrid"},"description": "https://www.ticketmaster.es/event/melendi-tickets/16255?language=en-us" , "location": "Cáceres","summary": "Melendi"}})
+    return gapi.client.calendar.events.insert(${melendi})
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
