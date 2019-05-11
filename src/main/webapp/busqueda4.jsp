@@ -35,20 +35,10 @@
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
+  <% String variable = request.getAttribute("resultado").toString(); %>
   function execute() {
-    return gapi.client.calendar.events.insert({
-    	  "end": {
-    		    "dateTime": "2019-05-8T22:00:00" + "-02:00",
-    		    "timeZone": "Europe/Madrid"
-    		  },
-    		  "start": {
-    		    "dateTime": "2019-05-7T10:00:00" + "-02:00",
-    		    "timeZone": "Europe/Madrid"
-    		  },
-    		  "description": "https://www.ticketmaster.es/event/melendi-tickets/16255?language=en-us",
-    		  "location": "Roquetas de mar",
-    		  "summary": "Melendi"
-    		})
+    return gapi.client.calendar.events.insert(variable
+    		)
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);

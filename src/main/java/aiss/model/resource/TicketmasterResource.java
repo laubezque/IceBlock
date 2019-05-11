@@ -91,42 +91,42 @@ public class TicketmasterResource extends HttpServlet {
 		return e;
 		
 	}
-	public static Embedded searchById(String id) throws JSONException, IOException {
-		//https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey={apikey}
-		Embedded e = new Embedded();
-	
-		String URL = URLBaseTicketMasterDetails + id;
-	
-		URL += "&apikey="+TICKETMASTER_API_KEY ;
-		
-		log.log(Level.FINE,"URL : "+ URL );
-		
-		ClientResource tm = new ClientResource(URL);
-		log.log(Level.FINE,"Esto esta petando." + tm.toString());
-		
-		
-		
-		try {
-			
-			Representation response = tm.get();
-			log.log(Level.FINE,"Response---------------------------------------------------------- : "+ response );
-			
-			ObjectMapper JSON2Object = new ObjectMapper();
-			JsonRepresentation b = new JsonRepresentation(response.getText());
-			JSONObject a = b.getJsonObject();
-			
-			e = JSON2Object.readValue(a.get("_embedded").toString(), Embedded.class);
-			
-		}catch (Exception IAE){
-			
-			new IllegalArgumentException("No se han encontrado eventos");
-			
-		}
-		
-		
-		
-		return e;
-		
-	}
+	public static Event searchById(String id) throws JSONException, IOException {
+        //https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey=%7Bapikey%7D
+        Event e = new Event();
+
+        String URL = URLBaseTicketMasterDetails + id;
+
+        URL += "&apikey="+TICKETMASTER_API_KEY ;
+
+        log.log(Level.FINE,"URL : "+ URL );
+
+        ClientResource tm = new ClientResource(URL);
+        log.log(Level.FINE,"Esto esta petando." + tm.toString());
+
+
+
+        try {
+
+            Representation response = tm.get();
+            log.log(Level.FINE,"Response---------------------------------------------------------- : "+ response );
+
+            ObjectMapper JSON2Object = new ObjectMapper();
+            JsonRepresentation b = new JsonRepresentation(response.getText());
+            JSONObject a = b.getJsonObject();
+
+            e = JSON2Object.readValue(a.get("event").toString(), Event.class);
+
+        }catch (Exception IAE){
+
+            new IllegalArgumentException("No se han encontrado eventos");
+
+        }
+
+
+
+        return e;
+
+    }
 	
 }

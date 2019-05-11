@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import aiss.model.googleCalendar.Item;
 import aiss.model.googleCalendar.ListEvents;
 import aiss.model.resource.GoogleCalendarResource;
+import aiss.model.resource.TicketmasterResource;
+import aiss.model.tickermaster.Dates;
+import aiss.model.tickermaster.Embedded;
+import aiss.model.tickermaster.Event;
+import aiss.model.tickermaster.Start;
 
 
 public class CalendarInsertController extends HttpServlet {
@@ -29,41 +34,58 @@ public class CalendarInsertController extends HttpServlet {
 		
 		// Request data
 //		string fecha = req.getParameter(name);
-				String eventID = (String) req.getParameter("event_ID");
-				 log.info("----------------------------------" + eventID);
-				System.out.println(eventID);
-		        String accessToken = (String) req.getSession().getAttribute("GoogleCalendar-token");
-//		        
-//		        Event event = new Event();
-//		        event.setStart(new EventDateTime().setDateTime(start));
-//		        event.setEnd(new EventDateTime().setDateTime(end));
-//		        event.setSummary(eventEntity.getSummary());
-//		        event.setLocation(location);
-//		        event.setDescription(description);
-//
-//		        Item Event = null;
-						
-		        if (accessToken != null && !"".equals(accessToken)) {
+	}
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 String accessToken = (String) req.getSession().getAttribute("GoogleCalendar-token");
 
-		            GoogleCalendarResource gdResource = new GoogleCalendarResource(accessToken);
+			String eventID = (String) req.getParameter("event_ID");
+			log.info("----------------------------------" + eventID);
+					
+			
+			Event evento = TicketmasterResource.searchById(eventID);
+			
+			Dates date = evento.getDates();
+			Start date2 = date.getStart();
+			String date3 = date2.getDateTime();
+			String fechaInicio = date3;
 
-//		            if (Event != null) {
-//			            Item EventoInsertado = gdResource.insertEvent(Event);
-//		            } else {
-//		                log.info("The files returned are null... probably your token has experied. Redirecting to OAuth servlet.");
-//		                req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
-//		            }
-		        } else {
-		            log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");
-		            req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
-		        }
-				
-				// Forward to contact list view
-			}
+			
+//			String fechaInicio = evento.getDates().getStart().getDateTime();
+			
+			
+			String timeZone = evento.getDates().getTimezone();
+			String location = evento.getEmbedded().getFirstVenues().getCity().getName();
+			String description = evento.getUrl();
+			String summary = evento.getName();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+
+			
+			String res ="{\"end\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
+	                "\"start\": {\"dateTime\": \""+ fechaInicio +"\",\"timeZone\": \""+ timeZone +"\"},"+
+	                "\"description\": \""+ description +"\" , "+
+	                "\"location\": \""+ location +"\","+
+	                "\"summary\": \""+ summary +"\"}\"";
+			
+			req.setAttribute("resultado", res);
+							
+			        if (accessToken != null && !"".equals(accessToken)) {
+
+
+			            if (evento != null) {
+			            	req.getRequestDispatcher("/busqueda4.jsp").forward(req, resp);
+			            } else {
+			                log.info("The files returned are null... probably your token has experied. Redirecting to OAuth servlet.");
+			                req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
+			            }
+			        } else {
+			            log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");
+			            req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
+			        }
+					
+					// Forward to contact list view
+				}
+
 	}
 
-}
+
