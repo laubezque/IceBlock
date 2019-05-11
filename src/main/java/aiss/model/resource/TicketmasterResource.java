@@ -40,6 +40,7 @@ public class TicketmasterResource extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static String URLBaseTicketMasterDiscovery = "https://app.ticketmaster.com/discovery/v2/events.json?";
+	private static String URLBaseTicketMasterDetails = "https://app.ticketmaster.com/discovery/v2/events/";
 	private static String IDIOM_CODE = "ES";
 	private static final String TICKETMASTER_API_KEY = "nwHQ0avEGxWu0artoxru0IYIA6GxV707";	
 	private static final Logger log = Logger.getLogger(TicketmasterResource.class.getName());
@@ -59,6 +60,43 @@ public class TicketmasterResource extends HttpServlet {
 				
 		URL += IDIOM_CODE;
 		
+		URL += "&apikey="+TICKETMASTER_API_KEY ;
+		
+		log.log(Level.FINE,"URL : "+ URL );
+		
+		ClientResource tm = new ClientResource(URL);
+		log.log(Level.FINE,"Esto esta petando." + tm.toString());
+		
+		
+		
+		try {
+			
+			Representation response = tm.get();
+			log.log(Level.FINE,"Response---------------------------------------------------------- : "+ response );
+			
+			ObjectMapper JSON2Object = new ObjectMapper();
+			JsonRepresentation b = new JsonRepresentation(response.getText());
+			JSONObject a = b.getJsonObject();
+			
+			e = JSON2Object.readValue(a.get("_embedded").toString(), Embedded.class);
+			
+		}catch (Exception IAE){
+			
+			new IllegalArgumentException("No se han encontrado eventos");
+			
+		}
+		
+		
+		
+		return e;
+		
+	}
+	public static Embedded searchById(String id) throws JSONException, IOException {
+		//https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey={apikey}
+		Embedded e = new Embedded();
+	
+		String URL = URLBaseTicketMasterDetails + id;
+	
 		URL += "&apikey="+TICKETMASTER_API_KEY ;
 		
 		log.log(Level.FINE,"URL : "+ URL );
