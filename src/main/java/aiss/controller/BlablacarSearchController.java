@@ -2,6 +2,8 @@ package aiss.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.blablacar.search.Trip;
 import aiss.model.resource.BlablacarResource;
+import aiss.model.tickermaster.Embedded;
+import aiss.model.tickermaster.Event;
 
 /**
  * Servlet implementation class BlablacarSearchController
@@ -40,19 +44,19 @@ public class BlablacarSearchController extends HttpServlet {
 		String departurePlace = request.getParameter("departurePlace");
 		String arrivalPlace = request.getParameter("arrivalPlace");
 		String departureDate = request.getParameter("departureDate");
-		RequestDispatcher rd ;
+		RequestDispatcher rd;
 
-		//log.log(Level.FINE, "Searching for trips from " + departurePlace + "to" + arrivalPlace + "on" + departureDate);
-
-		
+		// log.log(Level.FINE, "Searching for trips from " + departurePlace + "to" +
+		// arrivalPlace + "on" + departureDate);
 
 		Trip[] trips = BlablacarResource.getTripsWith(departurePlace, arrivalPlace, departureDate);
-		//Map<String, Object> e = trip.getAdditionalProperties();
+		// Map<String, Object> e = trip.getAdditionalProperties();
 
 		if (trips != null) {
-
-			rd = request.getRequestDispatcher("/vistaInicio.jsp");
-			request.setAttribute("trips", trips);
+			Trip[] selectedTrips = fiveTrips(trips);
+			// rd = request.getRequestDispatcher("/vistaViajes.jsp");
+			request.setAttribute("selectedTrips", selectedTrips);
+			request.getRequestDispatcher("/vistaViajes.jsp").forward(request, response);
 
 		} else {
 
@@ -61,21 +65,21 @@ public class BlablacarSearchController extends HttpServlet {
 		}
 //		rd.forward(request, response);
 //		
-		response.setContentType("text/html");
-		PrintWriter pw = response.getWriter();
-		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE></HEAD>");
-		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
-		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
-		pw.println("<H2></H2><P>");
-		pw.println("<UL>\n");
-
-		pw.println("Searching for trips from " + departurePlace + " to " + arrivalPlace + " on the date " + departureDate
-				  +"<BR>");
-
-		pw.println("links  -> " + trips[0].getPermanentId() + "<BR>");
-
-		pw.println("</BODY></HTML>");
-		pw.close();
+//		response.setContentType("text/html");
+//		PrintWriter pw = response.getWriter();
+//		pw.println("<HTML><HEAD><TITLE>Leyendo parámetros</TITLE></HEAD>");
+//		pw.println("<BODY BGCOLOR=\"#CCBBAA\">");
+//		pw.println("<H2>Leyendo parámetros desde un formulario html</H2><P>");
+//		pw.println("<H2></H2><P>");
+//		pw.println("<UL>\n");
+//
+//		pw.println("Searching for trips from " + departurePlace + " to " + arrivalPlace + " on the date " + departureDate
+//				  +"<BR>");
+//
+//		pw.println("links  -> " + trips[0].getPermanentId() + "<BR>");
+//
+//		pw.println("</BODY></HTML>");
+//		pw.close();
 
 	}
 
@@ -85,9 +89,24 @@ public class BlablacarSearchController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		doGet(request,response);
-		
+
+		doGet(request, response);
 
 	}
+
+	private Trip[] fiveTrips(Trip[] trips) {
+		Trip res[] = new Trip[5] ;
+		
+		if (trips.length<5) {
+ 			for(int i = 0 ; i<trips.length;i++) {
+ 				res[i]= trips[i];
+ 			}
+ 		}else if (trips.length>=5) {
+ 			for(int j=0 ; j<5;j++) {
+ 				res[j]= trips[j];
+ 			}
+ 		}
+ 		return res;
+	}
+
 }
