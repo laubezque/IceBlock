@@ -42,14 +42,14 @@ public class BlablacarSearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String eventID = (String) request.getParameter("event_ID");
-		log.info("----------------------------------" + eventID);
+		String eventID = (String) request.getParameter("eventID");
+		log.info("----------------------------------" + eventID.toString() + "AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
 				
 		
 		Event evento = TicketmasterResource.searchById(eventID);
 
 		String departurePlace = request.getParameter("departurePlace");
-		String arrivalPlace = evento.getEmbedded().getFirstVenues().getCity().getName();
+		String arrivalPlace = evento.getEmbedded().getFirstVenues().getCity().getName() ;
 		String departureDate = request.getParameter("departureDate");
 		RequestDispatcher rd;
 

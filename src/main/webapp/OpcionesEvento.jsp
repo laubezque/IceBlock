@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,20 @@
 		document.getElementById("content").style.marginLeft = "0px";
 	}
 </script>
+
+
+	
+<%String eventID = request.getParameter("event_ID");%>
+<%String url = request.getParameter("event_firstURLImage");%>	
+
+
+<!-- <script type="text/javascript" >
+
+	 request.setParameter("event_ID","345");
+	 String id = request.getParameter("event_ID");
+	
+
+</script> -->
 
 <title>menu</title>
 
@@ -55,9 +70,7 @@
 		</b>
 	</div>
 	<div id="foto">
-		<img
-			src="${event.firstURLImage}"
-			height="140px" width="200px">
+		<img src= <%=url %> height="140px" width="200px">
 	</div>
 
 	<div id="body">
@@ -65,25 +78,27 @@
 		<div id="botonticket">
 			<a href="#" STYLE height="50px" width="50px" class="myButton">tickets</a>
 		</div>
-		
+
 		<div id="botonaddtocalendar">
 			<a href="#" class="myButton">add to calendar</a>
 		</div>
-	
-		
+
+
 		<div id="botontrips">
-		<form id = "blablacarSearch"action="BlablacarSearchController" method="get">
-			Enter departure place : <input type="text" name="departurePlace">
-			<input type="hidden" name="arrivalPlace" value="${event.embedded.firstVenues.city.name}" />
-			 Enter date of departure : <input type="date" name="departureDate">
-			<input type="submit" name = "blablacarSearchBtn" title = "search" value = "search" />
-			<!--  <input type="submit" name = "blablacarSearchBtn" title = "search trips" value = "search"
+			<form id="blablacarSearch" action="BlablacarSearchController"
+				method="get">
+				Enter departure place : <input type="text" name="departurePlace">
+				<input type="hidden" name="eventID" value=" <%= eventID %>"/> 
+				Enter date of departure : <input type="date" name="departureDate"> <input
+					type="submit" name="blablacarSearchBtn" title="search"
+					value="search" />
+				<!--  <input type="submit" name = "blablacarSearchBtn" title = "search trips" value = "search"
 			  href="#" class="myButton" /> -->
 
-		</form>
-	</div>
-		
-		
+			</form>
+		</div>
+
+
 	</div>
 
 
