@@ -28,13 +28,6 @@
 <%String url = request.getParameter("event_firstURLImage");%>	
 
 
-<!-- <script type="text/javascript" >
-
-	 request.setParameter("event_ID","345");
-	 String id = request.getParameter("event_ID");
-	
-
-</script> -->
 
 <title>menu</title>
 
@@ -63,11 +56,13 @@
 		</ul>
 	</div>
 
-	<div>
-		<b href="#"> <span data-text="L">L</span> <span data-text="O">O</span>
-			<span data-text="G">G</span> <span data-text="O">O</span> <span
-			data-text="U">U</span> <span data-text="T">T</span>
-		</b>
+			<div >
+			<a href="/Index.jsp"><b >
+				<span data-text="E">E</span>
+				<span data-text="X">X</span>
+				<span data-text="I">I</span>
+				<span data-text="T">T</span>
+			</b></a>
 	</div>
 	<div id="foto">
 		<img src= <%=url %> height="140px" width="200px">
@@ -92,9 +87,6 @@
 				Enter date of departure : <input type="date" name="departureDate"> <input
 					type="submit" name="blablacarSearchBtn" title="search"
 					value="search" />
-				<!--  <input type="submit" name = "blablacarSearchBtn" title = "search trips" value = "search"
-			  href="#" class="myButton" /> -->
-
 			</form>
 		</div>
 

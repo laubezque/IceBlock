@@ -42,12 +42,12 @@
 		</ul>
 	</div>
 
-	<div>
-		<b href="#"> <span data-text="L">L</span> <span data-text="O">O</span>
-			<span data-text="G">G</span> <span data-text="O">O</span> <span
-			data-text="U">U</span> <span data-text="T">T</span>
-		</b>
-	</div>
+			<b href="#">
+				<span data-text="E">E</span>
+				<span data-text="X">X</span>
+				<span data-text="I">I</span>
+				<span data-text="T">T</span>
+			</b>
 
 	<div id="tabla" class="datagrid">
 		<table>
@@ -64,25 +64,7 @@
 					
 				</tr>
 			</thead>
-		<!-- 	<div id="pie">
-				<tfoot>
-					<tr>
-						<td colspan="5">
-							<div id="paging">
-								<ul>
-									<li><a href="#"><span>Previous</span></a></li>
-									<li><a href="#" class="active"><span>1</span></a></li>
-									<li><a href="#"><span>2</span></a></li>
-									<li><a href="#"><span>3</span></a></li>
-									<li><a href="#"><span>4</span></a></li>
-									<li><a href="#"><span>5</span></a></li>
-									<li><a href="#"><span>Next</span></a></li>
-								</ul>
-							</div>
-					</tr>
-				</tfoot>
-			</div>
-			 -->
+
 						<c:forEach items="${selectedTrips}" var="trip">
 			
 			<tbody>
@@ -96,37 +78,6 @@
 					<td><a href="${trip.links.front}">buy</a></td>
 					
 				</tr>
-				
-			<!-- 	<tr class="alt">
-					<td>Sevilla</td>
-					<td>Madrid</td>
-					<td>hoy</td>
-					<td>100 eu</td>
-					<td>2</td>
-					
-				</tr>
-				<tr>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-				</tr>
-				<tr class="alt">
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-				</tr>
-				<tr>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-					<td>data</td>
-				</tr> -->
-			
 			</tbody>
 			</c:forEach>
 			

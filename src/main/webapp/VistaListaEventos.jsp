@@ -43,12 +43,14 @@
 	</div>
 	
 
-	<div class="logout">
-		<b href="#"> <span data-text="L">L</span> <span data-text="O">O</span>
-			<span data-text="G">G</span> <span data-text="O">O</span> <span
-			data-text="U">U</span> <span data-text="T">T</span>
-		</b>
-  </div>
+		<div >
+			<a href="/Index.jsp"><b >
+				<span data-text="E">E</span>
+				<span data-text="X">X</span>
+				<span data-text="I">I</span>
+				<span data-text="T">T</span>
+			</b></a>
+	</div>
 </div>
 <table class="indice">
 <tr >					
@@ -71,7 +73,7 @@
 							<form action="OpcionesEvento.jsp" method="post">
 							<input type="hidden" name="event_ID" value="${event.id}" />	
 							<input type="hidden" name="event_firstURLImage" value="${event.firstURLImage}" />							
-							<button type="submit" >Go</button>
+							<button type="submit" >More info</button>
 						</form></td>
           			</tr>       
         </c:forEach>

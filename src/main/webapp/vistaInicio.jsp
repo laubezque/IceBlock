@@ -51,15 +51,13 @@
 		</ul>
 	</div>
 
-	<div>
-			<b href="#">
-				<span data-text="L">L</span>
-				<span data-text="O">O</span>
-				<span data-text="G">G</span>
-				<span data-text="O">O</span>
-				<span data-text="U">U</span>
+		<div >
+			<a href="/Index.jsp"><b >
+				<span data-text="E">E</span>
+				<span data-text="X">X</span>
+				<span data-text="I">I</span>
 				<span data-text="T">T</span>
-			</b>
+			</b></a>
 	</div>
 
 
