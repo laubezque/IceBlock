@@ -10,7 +10,8 @@
 	rel="stylesheet">
 <link href="https://apis.google.com/js/platform.js" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" type="text/css" href="/css/vistaEvento.css">
+<link rel="stylesheet" type="text/css" href="/css/vistaListaEvento.css">
+
 
 
 <title>Eventos IceBlock</title>
@@ -52,32 +53,41 @@
 			</b></a>
 	</div>
 </div>
-<table class="indice">
-<tr >					
-					<th class="indice1">Fecha</th>
-					<th class="indice2">Hora</th>
-					<th class="indice3">Nombre</th>
-          <th class="indice4">Localización</th>
-          <th class="indice5"></th>
-        </tr>
-        </table>
-  <table class="parte2">
+<div id="tabla" class="datagrid">
+		<table>
+
+			<thead>
+				<tr>
+
+					<th>Fecha</th>
+					<th>Hora</th>
+					<th>Nombre</th>
+					<th>Localización</th>
+					<th>More Info</th>
+					
+				</tr>
+			</thead>
+
+  
 				
           <c:forEach items="${tablaEventos}" var="event">
-					<tr class="eventos" >
-						<td class="eventos1">${event.dates2Date}</td>
-						<td class="eventos2">${event.dates2Hour}</td>
-						<td class="eventos3">${event.name}</td>
-						<td class="eventos4">${event.embedded.firstVenues.city.name}</td>
-						<td class="eventos5">
-							<form action="OpcionesEvento.jsp" method="post">
+          		<tbody>
+					<tr>
+						<td>${event.dates2Date}</td>
+						<td>${event.dates2Hour}</td>
+						<td>${event.name}</td>
+						<td>${event.embedded.firstVenues.city.name}</td>
+						<td><a href="${event.url}">go</a>
+							<form action="CalendarInsertController" method="post">
 							<input type="hidden" name="event_ID" value="${event.id}" />	
 							<input type="hidden" name="event_firstURLImage" value="${event.firstURLImage}" />							
-							<button type="submit" >More info</button>
+							
 						</form></td>
-          			</tr>       
+          			</tr>  
+          		</tbody>     
         </c:forEach>
 
 	</table>
+</div>
 </body>
 </html>
