@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.text.View;
 
+import org.eclipse.jetty.util.log.Log;
 import org.jboss.resteasy.util.Encode;
 
 import com.google.appengine.repackaged.com.google.common.base.Ticker;
@@ -35,6 +37,7 @@ import aiss.utility.PropiedadesEventosTM;
 public class EventKeywordTicketMasterController extends HttpServlet {
 	
 	private String URLBaseTicketMasterDiscovery = "https://app.ticketmaster.com/discovery/v2/events.json?";
+	private static final Logger log = Logger.getLogger(EventKeywordTicketMasterController.class.getName());
 	private String API_KEY = TicketmasterResource.getTicketmasterApiKey();
 	private static final long serialVersionUID = 1L;
        
@@ -62,7 +65,9 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 		
 		
 		// Tomamos el parametro keyword y llamamos ha searchByKeyword nos devuelve un embedded.
-		String keyword = request.getParameter("key_word");
+		String keyword =(String) request.getParameter("key_word");
+		log.info("----------------------------------" + keyword);
+
 		Embedded embOfEvents = TicketmasterResource.searchByKeyword(keyword);
 		if (embOfEvents != null) {
 			Integer tmp = embOfEvents.getEvents().size();

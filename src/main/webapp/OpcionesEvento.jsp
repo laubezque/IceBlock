@@ -50,7 +50,10 @@
 	</div>
 	<div>
 		<ul>
-			<li><a href="#">SPORTS</a></li>
+		<form action="EventKeywordTicketMasterController">
+			<input type="hidden" name="Sports">
+			<li><a href="#"><input type="submit" name="Concerts"></a></li>
+		</form>
 			<li><a href="#">CONCERTS</a></li>
 			<li><a href="#">OTHERS</a></li>
 		</ul>

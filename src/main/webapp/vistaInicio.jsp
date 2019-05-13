@@ -45,9 +45,19 @@
     </div>
 	<div>
 		<ul>
-			<li><a href="#">SPORTS</a></li>
-			<li><a href="#">CONCERTS</a></li>
-			<li><a href="#">OTHERS</a></li>
+			<form action="EventKeywordTicketMasterController" method="post">
+				
+				<li><a><input type="submit" name="key_word" value= "Sports"></a>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+				
+				<li><a><input type="submit" name="key_word" value= "Concerts"></a>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+				
+				<li><a><input type="submit" name="key_word" value= "Concerts"></a>
+			</form>
+			
 		</ul>
 	</div>
 
