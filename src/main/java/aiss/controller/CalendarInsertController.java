@@ -1,7 +1,6 @@
 package aiss.controller;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -9,14 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.googleCalendar.Item;
-import aiss.model.googleCalendar.ListEvents;
-import aiss.model.resource.GoogleCalendarResource;
 import aiss.model.resource.TicketmasterResource;
-import aiss.model.tickermaster.Dates;
-import aiss.model.tickermaster.Embedded;
 import aiss.model.tickermaster.Event;
-import aiss.model.tickermaster.Start;
 
 
 public class CalendarInsertController extends HttpServlet {
@@ -83,20 +76,13 @@ public class CalendarInsertController extends HttpServlet {
 							
 			        if (accessToken != null && !"".equals(accessToken)) {
 
-
-			            if (evento != null) {
-//			            	req.getRequestDispatcher("/busqueda4.jsp").forward(req, resp);
 			            	resp.sendRedirect("/busqueda4.jsp");
-			            } else {
-			                log.info("The files returned are null... probably your token has experied. Redirecting to OAuth servlet.");
-			                req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
-			            }
+			           
 			        } else {
 			            log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");
 			            req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
 			        }
 					
-					// Forward to contact list view
 				}
 
 	}

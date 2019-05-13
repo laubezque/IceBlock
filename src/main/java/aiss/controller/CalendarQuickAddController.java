@@ -49,13 +49,13 @@ public class CalendarQuickAddController extends HttpServlet {
         	if (success) {
     			req.setAttribute("message", "Se ha añadido correctamente");
     			log.log(Level.FINE, "Event with string=" + string + " se ha creado");
-                req.getRequestDispatcher("/Calendario.jsp").forward(req, resp);
+    			resp.sendRedirect("/Calendario.jsp");
 
     		}
     		else {
     			req.setAttribute("message", "no se ha podio crear");
     			log.log(Level.FINE, "Event with string=" + string + " no se ha creao");
-                req.getRequestDispatcher("/error.jsp").forward(req, resp);
+    			resp.sendRedirect("/error.jsp");
 
     		}
         } else {

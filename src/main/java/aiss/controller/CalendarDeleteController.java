@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.googleCalendar.Item;
 import aiss.model.resource.GoogleCalendarResource;
 
 /**
@@ -27,28 +26,6 @@ public class CalendarDeleteController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 
-			String accessToken = (String) req.getSession().getAttribute("GoogleCalendar-token");
-            GoogleCalendarResource gdResource = new GoogleCalendarResource(accessToken);
-
-			String id = req.getParameter("id");
-			boolean success = gdResource.deleteEvent(id);
-					
-	        if (accessToken != null && !"".equals(accessToken)) {
-
-	        	if (success) {
-	    			req.setAttribute("message", "Se ha borrao");
-	    			log.log(Level.FINE, "Event with id=" + id + " se ha borrao");
-	    		}
-	    		else {
-	    			req.setAttribute("message", "no se ha podio borra");
-	    			log.log(Level.FINE, "Event with id=" + id + " no se ha borrao");
-	                req.getRequestDispatcher("/error.jsp").forward(req, resp);
-
-	    		}
-	        } else {
-	            log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");
-	            req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
-	        }	
 	}
 
 	/**
@@ -63,19 +40,20 @@ public class CalendarDeleteController extends HttpServlet {
         if (accessToken != null && !"".equals(accessToken)) {
         	
     		boolean success = gdResource.deleteEvent(id);
-
+    		
+//    		https://calendar.google.com/calendar/r?gsessionid=OK&eventdeb=1
         	
         	if (success) {
     			req.setAttribute("message", "Se ha borrao");
     			log.log(Level.FINE, "Event with id=" + id + " se ha borrao");
-                req.getRequestDispatcher("/Calendario.jsp").forward(req, resp);
+    			resp.sendRedirect("/Calendario.jsp");
                 
 
     		}
     		else {
     			req.setAttribute("message", "no se ha podio borra");
     			log.log(Level.FINE, "Event with id=" + id + " no se ha borrao");
-                req.getRequestDispatcher("/error.jsp").forward(req, resp);
+    			resp.sendRedirect("/error.jsp");
 
     		}
         } else {
