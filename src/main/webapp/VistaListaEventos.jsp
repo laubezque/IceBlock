@@ -10,11 +10,14 @@
 	rel="stylesheet">
 <link href="https://apis.google.com/js/platform.js" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
 <link rel="stylesheet" type="text/css" href="/css/vistaListaEvento.css">
+<link rel="shortcut icon" href="imagenes/icono.ico" />
 
 
 
-<title>Eventos IceBlock</title>
+
+<title>Iceblock / Eventos</title>
 
 <script type="text/javascript">
 	function openSlideMenu() {
@@ -43,6 +46,25 @@
 		</div>
 	</div>
 	
+	<div class="boton" id = "botones">
+		<ul>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word" value="SPORTS"
+							class="butn">SPORTS</button></a></li>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word"
+							value="CONCERTS" class="butn">CONCERTS</button></a></li>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word" value="OTHERS"
+							class="butn">OTHERS</button></a></li>
+			</form>
+		</ul>
+	</div>
 
 		<div >
 			<a href="/Index.jsp"><b >

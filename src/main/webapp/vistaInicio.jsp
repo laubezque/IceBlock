@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
+	<link rel="stylesheet" type="text/css" href="/css/vistaPrincipal.css">
 <link rel="shortcut icon" href="imagenes/icono.ico" />
-<link rel="stylesheet" type="text/css" href="menu15.css">
 
 
+<meta charset="UTF-8">
 
 <title>Iceblock / Inicio</title>
 
@@ -64,6 +64,16 @@
 		</ul>
 	</div>
 
+</div>
+        	<div class="search-box">
+				<form action="EventKeywordTicketMasterController"  method="post">
+				
+				
+					<input type="text" placeholder=" " id="keyword" name="key_word" /><span></span>
+				
+				</form>
+            	    
+        	</div>
 	<div>
 		<a href="/Index.jsp"><b> <span data-text="E">E</span> <span
 				data-text="X">X</span> <span data-text="I">I</span> <span

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
 <link rel="stylesheet" type="text/css" href="/css/opcionesEvento.css">
 <link rel="shortcut icon" href="imagenes/icono.ico" />
+
+<meta charset="UTF-8">
 
 <title>Iceblock / Evento</title>
 
@@ -74,16 +76,28 @@ function authenticate() {
 		<div class="nav" id="menu">
 			<a href="#" class="close" onclick="closeSlideMenu()"> <i
 				class="fas fa-times"></i></a> 
-			<a href="/Discover.jsp">Discover</a>
+			<a href="/EventKeywordTicketMasterController">Discover</a>
             <a href="/Calendario.jsp">Calendar</a>
             <a href="/vistaInicio.jsp">Home</a>
 		</div>
 	</div>
-	<div>
+	<div class="boton" id = "botones">
 		<ul>
-			<li><a href="#">SPORTS</a></li>
-			<li><a href="#">CONCERTS</a></li>
-			<li><a href="#">OTHERS</a></li>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word" value="SPORTS"
+							class="butn">SPORTS</button></a></li>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word"
+							value="CONCERTS" class="butn">CONCERTS</button></a></li>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word" value="OTHERS"
+							class="butn">OTHERS</button></a></li>
+			</form>
 		</ul>
 	</div>
 
