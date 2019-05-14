@@ -37,9 +37,9 @@
 		<div class="nav" id="menu">
 			<a href="#" class="close" onclick="closeSlideMenu()"> 
 			<i class="fas fa-times"></i></a> 
-			<a href="#">Discover</a> 
-			<a href="/Calendario.jsp">Calendar</a> 
-			<a href="/vistaInicio.jsp">Home</a>
+			<a href="/Discover.jsp">Discover</a>
+            <a href="/Calendario.jsp">Calendar</a>
+            <a href="/vistaInicio.jsp">Home</a>
 		</div>
 	</div>
 	
