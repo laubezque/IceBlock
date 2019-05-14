@@ -52,8 +52,12 @@ public class TicketmasterResource extends HttpServlet {
 	public static Embedded searchByKeyword(String keyword) throws JSONException, IOException {
 		//https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey={apikey}
 		Embedded e = new Embedded();
-		String encodeKeyword = URLEncoder.encode(keyword,"UTF-8");
-		
+		String encodeKeyword;
+		if(keyword != "random") {
+			encodeKeyword = URLEncoder.encode(keyword,"UTF-8");
+		}else {
+			encodeKeyword = "random";
+		}
 		String URL = URLBaseTicketMasterDiscovery + "keyword=" + encodeKeyword;
 			
 		URL += "&countryCode=";
@@ -117,6 +121,43 @@ public class TicketmasterResource extends HttpServlet {
             JSONObject a = b.getJsonObject();
 
             e = JSON2Object.readValue(a.get("_embedded").toString(), Embedded.class).getEvents().get(0);
+
+        }catch (Exception IAE){
+
+            new IllegalArgumentException("No se han encontrado eventos");
+
+        }
+
+
+
+        return e;
+
+    }
+	public static Embedded searchSuggest() throws JSONException, IOException {
+        //https://app.ticketmaster.com/discovery/v2/events.json?keyword=devjam&source=universe&countryCode=US&apikey=%7Bapikey%7D
+        Embedded e = new Embedded();
+//        https://app.ticketmaster.com/discovery/v2/events?apikey=nwHQ0avEGxWu0artoxru0IYIA6GxV707&id=Z698xZ2qZadWT
+        String URL = "https://app.ticketmaster.com/discovery/v2/suggest";
+
+        URL += "?apikey="+TICKETMASTER_API_KEY;
+
+        log.log(Level.FINE,"URL : "+ URL );
+
+        ClientResource tm = new ClientResource(URL);
+        log.log(Level.FINE,"Esto esta petando." + tm.toString());
+
+
+
+        try {
+
+            Representation response = tm.get();
+            log.log(Level.FINE,"Response---------------------------------------------------------- : "+ response );
+
+            ObjectMapper JSON2Object = new ObjectMapper();
+            JsonRepresentation b = new JsonRepresentation(response.getText());
+            JSONObject a = b.getJsonObject();
+
+            e = JSON2Object.readValue(a.get("_embedded").toString(), Embedded.class);
 
         }catch (Exception IAE){
 

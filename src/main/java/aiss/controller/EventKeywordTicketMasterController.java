@@ -36,9 +36,8 @@ import aiss.utility.PropiedadesEventosTM;
  */
 public class EventKeywordTicketMasterController extends HttpServlet {
 	
-	private String URLBaseTicketMasterDiscovery = "https://app.ticketmaster.com/discovery/v2/events.json?";
+
 	private static final Logger log = Logger.getLogger(EventKeywordTicketMasterController.class.getName());
-	private String API_KEY = TicketmasterResource.getTicketmasterApiKey();
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -53,10 +52,25 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Embedded embOfEvents = TicketmasterResource.searchSuggest();
+		if (embOfEvents != null) {
+			Integer tmp = embOfEvents.getEvents().size();
+			
+			List<Event> tablaEventos = getInfoOfEvent(embOfEvents,tmp);
+			request.setAttribute("tablaEventos", tablaEventos);
+			
+			
+			
+			
+			request.getRequestDispatcher("VistaListaEventos.jsp").forward(request, response);
+
+		} else {
+			// Deberia redirigir a una página de error que explicara que no hay eventos disponibles
+			request.getRequestDispatcher("/error.jsp");
+		}
 
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -102,6 +116,7 @@ public class EventKeywordTicketMasterController extends HttpServlet {
 
 		return res;
 	}
+
 }
 	
 	
