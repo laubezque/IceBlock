@@ -91,7 +91,6 @@
     <servlet-name>CalendarDeleteController</servlet-name>
     <url-pattern>/CalendarDeleteController</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <description></description>
     <display-name>CalendarQuickAddController</display-name>
@@ -101,5 +100,15 @@
   <servlet-mapping>
     <servlet-name>CalendarQuickAddController</servlet-name>
     <url-pattern>/CalendarQuickAddController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarInsertControllerBlablacar</display-name>
+    <servlet-name>CalendarInsertControllerBlablacar</servlet-name>
+    <servlet-class>aiss.controller.CalendarInsertControllerBlablacar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarInsertControllerBlablacar</servlet-name>
+    <url-pattern>/CalendarInsertControllerBlablacar</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
-<link rel="stylesheet" type="text/css" href="2.page.css">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" type="text/css" href="/css/vistaViajes.css">
 <link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
+
+<meta charset="UTF-8">
+
 
 <script type="text/javascript">
 	function openSlideMenu() {
@@ -62,6 +63,7 @@
 					<th>Date</th>
 					<th>Price</th>
 					<th>Seats Left</th>
+					<th>Añadir</th>
 					<th>Link</th>
 					
 				</tr>
@@ -77,6 +79,13 @@
 					<td>${trip.departureDate}</td>
 					<td>${trip.price.value} ${trip.price.currency}</td>
 					<td>${trip.seatsLeft}</td>
+					<td>
+							<form action="/CalendarInsertControllerBlablacar" method="post">
+							<input type="hidden" name="location1" value="${trip.departurePlace.cityName}" />	
+							<input type="hidden" name="location2" value="${trip.arrivalPlace.cityName}" />
+							<input type="hidden" name="fechaInicio" value="${trip.departureDate}" />
+							<button type="submit" >Añadir</button>
+					</form></td>
 					<td><a href="${trip.links.front}">buy</a></td>
 					
 				</tr>
@@ -88,16 +97,6 @@
 
 
 </body>
-
-
-
-
-
-
-
-
-
-
 
 
 </html>
