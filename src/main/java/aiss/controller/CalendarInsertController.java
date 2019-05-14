@@ -32,8 +32,10 @@ public class CalendarInsertController extends HttpServlet {
 		 String accessToken = (String) req.getSession().getAttribute("GoogleCalendar-token");
 
 			String eventID = (String) req.getParameter("event_ID");
+			String event_firstURLImage = (String) req.getParameter("event_firstURLImage");
 			log.info("----------------------------------" + eventID);
-					
+			log.info("----------------------------------" + event_firstURLImage);
+
 			
 			Event evento = TicketmasterResource.searchById(eventID);
 //			log.info("----------------------------------" + evento.getEmbedded().getFirstVenues().getCity().getName());
@@ -72,16 +74,14 @@ public class CalendarInsertController extends HttpServlet {
 	                "\"location\": \""+ location +"\","+
 	                "\"summary\": \""+ summary +"\"}}";
 			
-			req.getSession().setAttribute("melendi", res);
-							
-			        if (accessToken != null && !"".equals(accessToken)) {
+			req.getSession().setAttribute("eventID", eventID);
+			req.getSession().setAttribute("json", res);
+			req.getSession().setAttribute("event_firstURLImage", event_firstURLImage);
+			req.getSession().setAttribute("tickets", description);
 
-			            	resp.sendRedirect("/busqueda4.jsp");
-			           
-			        } else {
-			            log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");
-			            req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
-			        }
+							
+        	resp.sendRedirect("/OpcionesEvento.jsp");
+
 					
 				}
 

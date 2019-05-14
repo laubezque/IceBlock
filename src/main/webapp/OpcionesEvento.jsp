@@ -4,12 +4,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>page</title>
-<link rel="stylesheet" type="text/css" href="2.page.css">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
 <link rel="stylesheet" type="text/css" href="/css/opcionesEvento.css">
+<link rel="shortcut icon" href="imagenes/icono.ico" />
+
+<title>Iceblock / Evento</title>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script type="text/javascript">
+function authenticate() {
+    return gapi.auth2.getAuthInstance()
+        .signIn({scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events"})
+        .then(function() { console.log("Sign-in successful"); },
+              function(err) { console.error("Error signing in", err); });
+  }
+  function loadClient() {
+    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  function execute() {
+    return gapi.client.calendar.events.insert(${json})
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  gapi.load("client:auth2", function() {
+    gapi.auth2.init({client_id: "111140053841-fdv5sqcpf9jamk31aiubeldm8gbkv8dg.apps.googleusercontent.com"});
+  });
+
+</script>
+
+
 
 <script type="text/javascript">
 	function openSlideMenu() {
@@ -24,8 +54,6 @@
 
 
 	
-<%String eventID = request.getParameter("event_ID");%>
-<%String url = request.getParameter("event_firstURLImage");%>	
 
 
 
@@ -35,6 +63,7 @@
 
 </head>
 <body>
+
 
 	<div id="content">
 
@@ -50,10 +79,7 @@
 	</div>
 	<div>
 		<ul>
-		<form action="EventKeywordTicketMasterController">
-			<input type="hidden" name="Sports">
-			<li><a href="#"><input type="submit" name="Concerts"></a></li>
-		</form>
+			<li><a href="#">SPORTS</a></li>
 			<li><a href="#">CONCERTS</a></li>
 			<li><a href="#">OTHERS</a></li>
 		</ul>
@@ -68,25 +94,30 @@
 			</b></a>
 	</div>
 	<div id="foto">
-		<img src= <%=url %> height="140px" width="200px">
+		<img src= ${event_firstURLImage} height="140px" width="200px">
 	</div>
 
 	<div id="body">
 
 		<div id="botonticket">
-			<a href="#" STYLE height="50px" width="50px" class="myButton">tickets</a>
+			<a href="${tickets}" STYLE height="50px" width="50px" class="myButton">tickets</a>
 		</div>
 
-		<div id="botonaddtocalendar">
-			<a href="#" class="myButton">add to calendar</a>
+
+		<div id="botonLogin">
+			<button onclick="authenticate().then(loadClient)" class="myButton">Login</button>
 		</div>
+		<div id="botonaddtocalendar">
+			<button onclick="execute()" class="myButton">add to calendar</button>
+		</div>
+		
 
 
 		<div id="botontrips">
 			<form id="blablacarSearch" action="BlablacarSearchController"
 				method="get">
 				Enter departure place : <input type="text" name="departurePlace">
-				<input type="hidden" name="eventID" value=" <%= eventID %>"/> 
+				<input type="hidden" name="eventID" value="${eventID}"/> 
 				Enter date of departure : <input type="date" name="departureDate"> <input
 					type="submit" name="blablacarSearchBtn" title="search"
 					value="search" />

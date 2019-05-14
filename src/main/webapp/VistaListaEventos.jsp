@@ -77,11 +77,11 @@
 						<td>${event.dates2Hour}</td>
 						<td>${event.name}</td>
 						<td>${event.embedded.firstVenues.city.name}</td>
-						<td><a href="${event.url}">go</a>
-							<form action="CalendarInsertController" method="post">
+						<td>
+							<form action="/CalendarInsertController" method="post">
 							<input type="hidden" name="event_ID" value="${event.id}" />	
 							<input type="hidden" name="event_firstURLImage" value="${event.firstURLImage}" />							
-							
+							<button type="submit" >More info</button>
 						</form></td>
           			</tr>  
           		</tbody>     
