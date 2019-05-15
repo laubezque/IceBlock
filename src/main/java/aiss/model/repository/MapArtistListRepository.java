@@ -93,6 +93,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		e7.setLugar("Pirineos");
 		e7.setNombre("La pirinaica");
 		addEvent(e7);
+		
 		//Crea listaEventos
 		List<Event> l1 = new ArrayList<Event>();
 		l1.add(e1);
@@ -119,21 +120,21 @@ public class MapArtistListRepository implements ArtistListRepository{
 		addArtist(a1);
 		
 		Artist a2 = new Artist();
-		a1.setEdad(23);
-		a1.setNombre("Prock");
-		a1.setDescripcion("Un cruk");
-		a1.setUrlFoto("https://tastethefloor.es/wp-content/uploads/2019/01/15-MS-prok-@davithmadrid-1600x2400.jpg");
-		a1.setGenero("Rap");
-		a1.setListaDeEventos(l2);
+		a2.setEdad(23);
+		a2.setNombre("Prock");
+		a2.setDescripcion("Un cruk");
+		a2.setUrlFoto("https://tastethefloor.es/wp-content/uploads/2019/01/15-MS-prok-@davithmadrid-1600x2400.jpg");
+		a2.setGenero("Rap");
+		a2.setListaDeEventos(l2);
 		addArtist(a2);
 		
 		Artist a3 = new Artist();
-		a1.setEdad(23);
-		a1.setNombre("Melendi");
-		a1.setDescripcion("Un genio músical que nos ha ayudado durante todo el proyecto");
-		a1.setUrlFoto("https://tastethefloor.es/wp-content/uploads/2019/01/15-MS-prok-@davithmadrid-1600x2400.jpg");
-		a1.setGenero("Rumba-Pop");
-		a1.setListaDeEventos(l3);
+		a3.setEdad(23);
+		a3.setNombre("Melendi");
+		a3.setDescripcion("Un genio músical que nos ha ayudado durante todo el proyecto");
+		a3.setUrlFoto("https://tastethefloor.es/wp-content/uploads/2019/01/15-MS-prok-@davithmadrid-1600x2400.jpg");
+		a3.setGenero("Rumba-Pop");
+		a3.setListaDeEventos(l3);
 		addArtist(a3);
 		
 	}
@@ -170,9 +171,9 @@ public class MapArtistListRepository implements ArtistListRepository{
 		eventMap.put(id, e);
 	}
 	@Override
-	public Collection<Event> getAllEvents() {
+	public List<Event> getAllEvents() {
 		Collection<Event> ls = eventMap.values();		
-		return  ls;
+		return (List<Event>) ls;
 	}
 	@Override
 	public Event getEvent(String id) {
