@@ -125,10 +125,10 @@ public class ArtistListResource {
         Event event = repository.getEvent(eventId);
         
         if (artist==null)
-            throw new NotFoundException("The playlist with id=" + artistaId + " was not found");
+            throw new NotFoundException("el artista con id=" + artistaId + " no se ha encontrado");
         
         if (event == null)
-            throw new NotFoundException("The song with id=" + eventId + " was not found");
+            throw new NotFoundException("El evento con id=" + eventId + " no se ha encontrado");
         
         if (artist.getEvent(eventId)!=null)
             throw new BadRequestException("The song is already included in the playlist.");
@@ -139,7 +139,7 @@ public class ArtistListResource {
         UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
         URI uri = ub.build(artistaId);
         ResponseBuilder resp = Response.created(uri);
-        resp.entity(artistaId);            
+        resp.entity(artist);            
         return resp.build();
     }
 	@DELETE
