@@ -122,7 +122,7 @@ function authenticate() {
 		</div>
 
 		<div id="boton3">
-			<a href="/Calendario.jsp" class="myButton">Ir al calendario</a>
+			<a href="/Calendario.jsp" class="myButton">Calendar</a>
 		</div>
 	</div>
 
