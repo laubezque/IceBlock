@@ -9,7 +9,7 @@ import aiss.api.model.Event;
 public interface ArtistListRepository {
 
 	 public void addArtist(Artist a);
-	 public List<Artist> getAllArtist();
+	 public Collection<Artist> getAllArtist();
 	 public Artist getArtist(String id);
 	 public void removeArtist(String id);
 	 public void upDateArtist(String id,Artist artista);

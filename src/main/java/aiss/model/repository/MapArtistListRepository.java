@@ -44,6 +44,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		e1.setFecha(LocalDateTime.of(LocalDate.of(2020, 1, 31), LocalTime.of(20, 10)));
 		e1.setLugar("Madrid");
 		e1.setNombre("Gala de los Goya");
+		addEvent(e1);
 		
 		Event e2 =new Event();
 		e2.setCapacidadMaximaDelEvento(260000);
@@ -144,9 +145,9 @@ public class MapArtistListRepository implements ArtistListRepository{
 		
 	}
 	@Override
-	public List<Artist> getAllArtist() {
+	public Collection<Artist> getAllArtist() {
 		Collection<Artist> ls = artistMap.values();		
-		return (List<Artist>) ls;
+		return  ls;
 	}
 	@Override
 	public Artist getArtist(String id) {
