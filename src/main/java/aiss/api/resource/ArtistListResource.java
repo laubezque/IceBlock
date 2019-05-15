@@ -27,6 +27,7 @@ import aiss.model.repository.ArtistListRepository;
 import aiss.model.repository.MapArtistListRepository;
 import javassist.NotFoundException;
 
+@Path("/artist")
 public class ArtistListResource {
 
 	private static ArtistListResource _instance= null;
@@ -46,7 +47,7 @@ public class ArtistListResource {
 	}
 	@GET
 	@Produces("application/json")
-	public List<Artist> getAll(){
+	public Collection<Artist> getAll(){
 		return repository.getAllArtist();
 		}
 	@GET
