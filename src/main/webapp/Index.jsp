@@ -40,7 +40,7 @@
         	</div>
  
         <div class="container" >
-            	<a class="btn" href="/LoginGoogle">
+            	<a class="btn" type="submit" href="EventKeywordTicketMasterController">
                 <svg width="277" height="62">
                     <defs>
                         <linearGradient id="grad1">
@@ -50,7 +50,10 @@
                     </defs>
                     <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
                 </svg>
-              <span>Iniciar sesión</span>
+               
+              <span >surprise me</span>
+              
+         
             </a>
         </div>  
     </main>

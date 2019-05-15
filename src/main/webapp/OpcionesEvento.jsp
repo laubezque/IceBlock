@@ -116,12 +116,12 @@ function authenticate() {
 	<div id="body">
 
 		<div id="botonticket">
-			<a href="${tickets}" STYLE height="50px" width="50px" class="myButton">tickets</a>
+			<a href="${tickets}"><button  class="myButton">tickets</button></a>
 		</div>
 
 
 		<div id="botonLogin">
-			<button onclick="authenticate().then(loadClient)" class="myButton">Login</button>
+			<button onclick="authenticate().then(loadClient)" class="myButton">login</button>
 		</div>
 		<div id="botonaddtocalendar">
 			<button onclick="execute()" class="myButton">add to calendar</button>
@@ -129,16 +129,29 @@ function authenticate() {
 		
 
 
-		<div id="botontrips">
+		
+		</div>
+		
+		<div id="trips">
+			
 			<form id="blablacarSearch" action="BlablacarSearchController"
 				method="get">
-				Enter departure place : <input type="text" name="departurePlace">
+			<div id="departure">
+				<a style="font-family:sans-serif;font-size:medium;"><strong>Enter departure place :</strong></a><BR> <input type="text" name="departurePlace" >
+			
+			</div>
 				<input type="hidden" name="eventID" value="${eventID}"/> 
-				Enter date of departure : <input type="date" name="departureDate"> <input
-					type="submit" name="blablacarSearchBtn" title="search"
-					value="search" />
+				
+			<div id="date">
+			
+				<a style="font-family:sans-serif;font-size:medium;"><strong>Enter date of departure :</strong> </a><BR><input type="date" name="departureDate"> 
+			</div>
+			<div id="search">
+				<button type="submit" name="blablacarSearchBtn" title="search" value="search" class="butn">search</button>
+			</div>
 			</form>
-		</div>
+		
+		
 
 
 	</div>

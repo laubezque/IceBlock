@@ -49,7 +49,7 @@
                 <form action="/CalendarQuickAddController" method="post">
                     <input type="text" Name="string" placeholder="evento hh:mm d/mm/YYYY "/>
                         <div class="bottom_links">
-                            <button type="submit" class="button">Crear evento</button>
+                            <button type="submit" class="butn">Crear evento</button>
                         </div>
                 </form>
             </div>       
@@ -62,7 +62,7 @@
                 <form action="/CalendarDeleteController" method="post">
                     <input type="text" Name="id" placeholder="ID del evento"/>
                         <div class="bottom_links">
-                            <button type="submit" class="button">Eliminar evento</button>
+                            <button type="submit" class="butn">Eliminar evento</button>
                         </div>
                 </form>
             </div>

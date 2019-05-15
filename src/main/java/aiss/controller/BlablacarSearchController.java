@@ -41,15 +41,14 @@ public class BlablacarSearchController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String eventID = (String) request.getParameter("eventID");
 		log.info("----------------------------------" + eventID.toString() + "AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
-				
-		
+
 		Event evento = TicketmasterResource.searchById(eventID);
 
 		String departurePlace = request.getParameter("departurePlace");
-		String arrivalPlace = evento.getEmbedded().getFirstVenues().getCity().getName() ;
+		String arrivalPlace = evento.getEmbedded().getFirstVenues().getCity().getName();
 		String departureDate = request.getParameter("departureDate");
 		RequestDispatcher rd;
 
@@ -102,18 +101,20 @@ public class BlablacarSearchController extends HttpServlet {
 	}
 
 	private Trip[] fiveTrips(Trip[] trips) {
-		Trip res[] = new Trip[5] ;
-		
-		if (trips.length<5) {
- 			for(int i = 0 ; i<trips.length;i++) {
- 				res[i]= trips[i];
- 			}
- 		}else if (trips.length>=5) {
- 			for(int j=0 ; j<5;j++) {
- 				res[j]= trips[j];
- 			}
- 		}
- 		return res;
+
+		Integer aux = trips.length;
+
+		if (aux >= 5) {
+			aux = 5;
+		}
+
+		Trip res[] = new Trip[aux];
+		for (int i = 0; i < aux; i++) {
+			res[i] = trips[i];
+		}
+
+		return res;
+
 	}
 
 }

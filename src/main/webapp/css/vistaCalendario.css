@@ -126,4 +126,17 @@
             stroke-dasharray: 196, 543;
             stroke-dashoffset: 437;
         }
-        
+
+.butn {
+	font-family: Courier New;
+	color: #ffffff;
+	font-size: 15px;
+	background: #40cfcf;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+}
+
+.butn:hover {
+	background: #2d9296;
+	text-decoration: none;
+}

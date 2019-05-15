@@ -1,18 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link href="https://apis.google.com/js/platform.js" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/Error.css">   
-	<link rel="shortcut icon" href="imagenes/icono.ico" />
-	
-    
-    
-    
+<link href="https://fonts.googleapis.com/css?family=Pacifico"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link href="https://apis.google.com/js/platform.js" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/vistaInicio.css">
+<link rel="stylesheet" type="text/css" href="/css/viajeCalendario.css">
+<link rel="shortcut icon" href="imagenes/icono.ico" />
+
+
+
+
 <meta charset="UTF-8">
-<title>Iceblock / Añadir viaje</title>
+
+
+<script type="text/javascript">
+	function openSlideMenu() {
+		document.getElementById("menu").style.width = "250px";
+		document.getElementById("content").style.marginLeft = "250px";
+	}
+	function closeSlideMenu() {
+		document.getElementById("menu").style.width = "0px";
+		document.getElementById("content").style.marginLeft = "0px";
+	}
+</script>
+
+
 
 <script src="https://apis.google.com/js/api.js"></script>
 <script type="text/javascript">
@@ -41,29 +58,73 @@ function authenticate() {
   });
 
 </script>
+
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>Iceblock / Añadir viaje</title>
+
+
 </head>
 <body>
 
+	<div id="content">
+		<span class="slide"> <a href="#" onclick="openSlideMenu()">
+				<i class="fas fa-bars"></i>
+		</a>
+		</span>
+		<div class="nav" id="menu">
+			<a href="#" class="close" onclick="closeSlideMenu()"> <i
+				class="fas fa-times"></i></a> <a href="#">Discover</a> <a
+				href="/Calendario.jsp">Calendar</a> <a href="/vistaInicio.jsp">Home</a>
+		</div>
+	</div>
+	<div class="boton" id="botones">
+		<ul>
+			<form action="EventKeywordTicketMasterController" method="post">
 
-        <svg width="380px" height="500px" viewBox="0 0 837 1045" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                <path d="M353,9 L626.664028,170 L626.664028,487 L353,642 L79.3359724,487 L79.3359724,170 L353,9 Z" id="Polygon-1" stroke="#007FB2" stroke-width="6" sketch:type="MSShapeGroup"></path>
-                <path d="M78.5,529 L147,569.186414 L147,648.311216 L78.5,687 L10,648.311216 L10,569.186414 L78.5,529 Z" id="Polygon-2" stroke="#EF4A5B" stroke-width="6" sketch:type="MSShapeGroup"></path>
-                <path d="M773,186 L827,217.538705 L827,279.636651 L773,310 L719,279.636651 L719,217.538705 L773,186 Z" id="Polygon-3" stroke="#795D9C" stroke-width="6" sketch:type="MSShapeGroup"></path>
-                <path d="M639,529 L773,607.846761 L773,763.091627 L639,839 L505,763.091627 L505,607.846761 L639,529 Z" id="Polygon-4" stroke="#F2773F" stroke-width="6" sketch:type="MSShapeGroup"></path>
-                <path d="M281,801 L383,861.025276 L383,979.21169 L281,1037 L179,979.21169 L179,861.025276 L281,801 Z" id="Polygon-5" stroke="#36B455" stroke-width="6" sketch:type="MSShapeGroup"></path>
-            </g>
-        </svg>
-        <div class="message-box">
-          <h1>Ooops</h1>
-      
-          <div class="buttons-con">
-            <div class="action-link-wrap">
-              <a onclick="authenticate().then(loadClient)" class="link-button link-back-button">Login</a>
-              <a onclick="execute()" class="link-button link-back-button">Add to calendar</a>
-              <a href="/Calendario.jsp" class="link-button">Ir al calendario</a>
-            </div>
-          </div>
-        </div>
+				<li><a><button type="submit" name="key_word" value="SPORTS"
+							class="butn">SPORTS</button></a></li>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word"
+							value="CONCERTS" class="butn">CONCERTS</button></a></li>
+			</form>
+			<form action="EventKeywordTicketMasterController" method="post">
+
+				<li><a><button type="submit" name="key_word" value="OTHERS"
+							class="butn">OTHERS</button></a></li>
+			</form>
+		</ul>
+	</div>
+	
+	<div id="exit">
+		<a href="/Index.jsp"><b> <span data-text="E">E</span> 
+		<span data-text="X">X</span> <span data-text="I">I</span>
+		<span data-text="T">T</span>
+		</b></a>
+	</div>
+
+
+	<div id="botones2">
+
+
+
+		<div id="boton1">
+			<a onclick="authenticate().then(loadClient)" class="myButton">Login</a>
+		</div>
+
+		<div id="boton2">
+			<a onclick="execute()" class="myButton">Add to calendar</a>
+		</div>
+
+		<div id="boton3">
+			<a href="/Calendario.jsp" class="myButton">Ir al calendario</a>
+		</div>
+	</div>
+
+
 </body>
 </html>

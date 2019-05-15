@@ -95,7 +95,7 @@
 					<td>${trip.price.value} ${trip.price.currency}</td>
 					<td>${trip.seatsLeft}</td>
 					<td>
-							<form action="/CalendarInsertControllerBlablacar" method="post">
+					<form action="/CalendarInsertControllerBlablacar" method="post">
 							<input type="hidden" name="location1" value="${trip.departurePlace.cityName}" />	
 							<input type="hidden" name="location2" value="${trip.arrivalPlace.cityName}" />
 							<input type="hidden" name="fechaInicio" value="${trip.departureDate}" />
@@ -107,6 +107,22 @@
 			</tbody>
 			</c:forEach>
 			
+		<!-- 	<tfoot>
+				<tr>
+					<td colspan="4">
+					<div id="paging">
+					<ul>
+						<li><a href="#"><span>Previous</span></a></li>
+						<li><a href="#" class="active"><span>1</span></a></li>
+						<li><a href="#"><span>2</span></a></li>
+						<li><a href="#"><span>3</span></a></li>
+						<li><a href="#"><span>4</span></a></li>
+						<li><a href="#"><span>5</span></a></li>
+						<li><a href="#"><span>Next</span></a></li>
+					</ul>
+					</div>
+				</tr>
+			</tfoot> -->
 		</table>
 	</div>
 
