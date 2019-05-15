@@ -15,7 +15,7 @@ public interface ArtistListRepository {
 	 public void upDateArtist(String id,Artist artista);
 	
 	 public void addEvent(Event a);
-	 public List<Event> getAllEvents();
+	 public Collection<Event> getAllEvents();
 	 public Event getEvent(String id);
 	 public void removeEvent(String id);
 	 public void upDateEvent(String id,Event artista);

@@ -22,6 +22,7 @@ import aiss.model.repository.ArtistListRepository;
 import aiss.model.repository.MapArtistListRepository;
 
 import java.net.URI;
+import java.util.Collection;
 import java.util.List;
 
 @Path("/events")
@@ -43,10 +44,10 @@ public class EventsResource {
 	    
 	    @GET
 	    @Produces("application/json")
-	    public List<Event> getAll()
+	    public Collection<Event> getAll()
 	    {
-	    	
-	        return repository.getAllEvents();
+	    	Collection<Event> res = repository.getAllEvents();
+	        return res;
 	    }
 	    
 	    
@@ -87,7 +88,7 @@ public class EventsResource {
 	    
 	    @PUT
 	    @Consumes("application/json")
-	    public Response updateSong(Event event) {
+	    public Response updateEvent(Event event) {
 	    	Event oldEvent = repository.getEvent(event.getId());
 	    	if(oldEvent== null){
 	    		throw new BadRequestException("El evento es necesario.Recuerda que no es posible actualizar algo inexistente.");
@@ -104,12 +105,12 @@ public class EventsResource {
 	    	if (oldEvent.getLugar() == null || "".equals(oldEvent.getLugar()))
 	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
 	    	
-	        return null;
+	        return Response.noContent().build();
 	    }
 	    
 	    @DELETE
 	    @Path("/{id}")
-	    public Response removeSong(@PathParam("id") String eventId) {
+	    public Response removeEvent(@PathParam("id") String eventId) {
 	    	Event event2BRemove = repository.getEvent(eventId);
 	    	if(event2BRemove == null) {
 	    		throw new BadRequestException("El evento es necesario.Recuerda que no es posible borrar algo inexistente.");
