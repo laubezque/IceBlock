@@ -115,7 +115,7 @@ public class ArtistListResource {
         return Response.noContent().build();
     }
 	@POST    
-    @Path("/add/{artistId}/{eventId}")
+    @Path("/{artistId}/{eventId}")
     @Consumes("text/plain")
     @Produces("application/json")
     public Response addEvent2Artist(@Context UriInfo uriInfo,@PathParam("artistId") String artistaId, @PathParam("eventId") String eventId) throws NotFoundException
@@ -136,9 +136,9 @@ public class ArtistListResource {
         repository.addEvent2Artist(artistaId, eventId);        
 
         // Builds the response
-//        UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
-//        URI uri = ub.build(artistaId);
-        ResponseBuilder resp = Response.created(uriInfo.getAbsolutePath());
+        UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
+        URI uri = ub.build(artistaId);
+        ResponseBuilder resp = Response.created(uri);
         resp.entity(artist);            
         return resp.build();
     }

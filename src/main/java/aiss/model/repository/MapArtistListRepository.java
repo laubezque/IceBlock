@@ -192,7 +192,8 @@ public class MapArtistListRepository implements ArtistListRepository{
 	}
 	@Override
 	public void addEvent2Artist(String artistaId, String eventId) {
-		getArtist(artistaId).addEvent(eventId);
+		
+		getArtist(artistaId).addEvent(eventMap.get(eventId));
 	}
 	@Override
 	public void removeEvent2Artist(String artistaId, String eventId) {
