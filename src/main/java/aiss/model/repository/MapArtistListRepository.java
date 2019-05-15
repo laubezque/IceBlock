@@ -171,9 +171,9 @@ public class MapArtistListRepository implements ArtistListRepository{
 		eventMap.put(id, e);
 	}
 	@Override
-	public List<Event> getAllEvents() {
+	public Collection<Event> getAllEvents() {
 		Collection<Event> ls = eventMap.values();		
-		return (List<Event>) ls;
+		return ls;
 	}
 	@Override
 	public Event getEvent(String id) {
