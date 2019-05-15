@@ -1,6 +1,5 @@
 package aiss.model.resource;
 
-import java.util.Map;
 import java.util.logging.Logger;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
@@ -14,7 +13,6 @@ public class GoogleCalendarResource {
 
     private final String access_token;
     private final String uri = "https://www.googleapis.com/calendar/v3/calendars/primary/events";
-    private final String uri_upload = "https://www.googleapis.com/upload/calendar/v2/files";
 
     public GoogleCalendarResource(String access_token) {
         this.access_token = access_token;
@@ -41,7 +39,6 @@ public class GoogleCalendarResource {
         ListEvents events = null;
         try {
             cr = new ClientResource(uri + "?access_token=" + access_token);
-            String result = cr.get(String.class);
             events = cr.get(ListEvents.class);
 
         } catch (ResourceException re) {
