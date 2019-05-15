@@ -3,16 +3,19 @@ package aiss.api;
 import java.util.HashSet;
 import java.util.Set;
 
+import aiss.api.resource.ArtistListResource;
+import aiss.api.resource.EventsResource;
+
 public class ArtistApplication {
 	
 	private Set<Object> singletons = new HashSet<Object>();
 	private Set<Class<?>> classes = new HashSet<Class<?>>();
 	
-	public ArtistaApplication() {
+	public ArtistApplication() {
 		
-		singletons.add(ConcertsResource.getInstance());
-		singletons.add(PlaylistResource.getInstance());
-		singletons.add(Artist.getInstance());
+		singletons.add(EventsResource.getInstance());
+		singletons.add(ArtistListResource.getInstance());
+
 
 	}
 	
