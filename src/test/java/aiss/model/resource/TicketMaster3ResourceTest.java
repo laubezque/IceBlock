@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import aiss.model.tickermaster.Embedded;
 
-public class TicketMasterResourceTest3 {
+public class TicketMaster3ResourceTest {
 	
 	@Test
 	public void getEventosSugeridos() throws IOException {

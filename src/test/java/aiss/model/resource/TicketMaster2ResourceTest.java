@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import aiss.model.tickermaster.Event;
 
-public class TicketMasterResourceTest2 {
+public class TicketMaster2ResourceTest {
 	
 	@Test
 	public void getEventID() throws IOException {
