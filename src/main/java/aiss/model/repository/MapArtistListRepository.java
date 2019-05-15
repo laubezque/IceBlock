@@ -166,7 +166,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 	}
 	@Override
 	public void addEvent(Event e) {
-		String id= "eve-"+indexEvent+"-ale";
+		String id= "eve-"+(indexEvent++)+"-ale";
 		e.setId(id);
 		eventMap.put(id, e);
 	}
