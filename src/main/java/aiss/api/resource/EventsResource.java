@@ -23,7 +23,7 @@ import aiss.model.repository.MapArtistListRepository;
 
 import java.net.URI;
 import java.util.Collection;
-import java.util.List;
+
 
 @Path("/events")
 public class EventsResource {
