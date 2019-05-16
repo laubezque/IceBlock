@@ -7,6 +7,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -17,12 +18,15 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.jboss.resteasy.spi.BadRequestException;
 import org.jboss.resteasy.spi.NotFoundException;
 
+import aiss.api.model.Artist;
 import aiss.api.model.Event;
 import aiss.model.repository.ArtistListRepository;
 import aiss.model.repository.MapArtistListRepository;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 @Path("/events")
@@ -44,9 +48,17 @@ public class EventsResource {
 	    
 	    @GET
 	    @Produces("application/json")
-	    public Collection<Event> getAll()
-	    {
-	    	Collection<Event> res = repository.getAllEvents();
+	    public Collection<Event> getAll(@QueryParam("eventName") String eventName,
+										@QueryParam("artistGen") String eventPlace)
+	    {List<Event> res = new ArrayList<Event>();
+		for(Event e:repository.getAllEvents()) {
+			
+		
+			if((eventName == null || eventName.equals("")||e.getNombre().equals(eventName))
+			&& (eventPlace == null || eventPlace.equals("")||e.getLugar().equals(eventPlace))) {
+				res.add(e);
+			}
+		}
 	        return res;
 	    }
 	    
@@ -69,10 +81,10 @@ public class EventsResource {
 	    @Produces("application/json")
 	    public Response addEvent(@Context UriInfo uriInfo, Event e) {
 	    	if (e.getNombre() == null || "".equals(e.getNombre()))
-	            throw new BadRequestException("El atributo nombre, es necesario.");
+	            throw new NotFoundException("El atributo nombre, es necesario.");
 	        
 	    	if (e.getFecha() == null || "".equals(e.getFecha().toString()))
-	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
+	    		 throw new NotFoundException("El atributo fecha, es necesario.Recuerda es un LocalDate.");
 
 	        repository.addEvent(e);
 
@@ -93,6 +105,9 @@ public class EventsResource {
 	    	if(oldEvent== null){
 	    		throw new BadRequestException("El evento es necesario.Recuerda que no es posible actualizar algo inexistente.");
 	    	}
+	    	 if(!oldEvent.getNombre().contentEquals(event.getNombre()))
+	         	return Response.status(javax.ws.rs.core.Response.Status.CONFLICT).build();
+	    	 
 	    	if (oldEvent.getNombre() == null || "".equals(oldEvent.getNombre()))
 	            throw new BadRequestException("El atributo nombre, es necesario.");
 	        
@@ -113,7 +128,7 @@ public class EventsResource {
 	    public Response removeEvent(@PathParam("id") String eventId) {
 	    	Event event2BRemove = repository.getEvent(eventId);
 	    	if(event2BRemove == null) {
-	    		throw new BadRequestException("El evento es necesario.Recuerda que no es posible borrar algo inexistente.");
+	    		throw new NotFoundException("El evento es necesario.Recuerda que no es posible borrar algo inexistente.");
 	    	}else {
 	    		repository.removeEvent(eventId);
 	    	}

@@ -1,6 +1,7 @@
 package aiss.api.resource;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
@@ -47,8 +49,19 @@ public class ArtistListResource {
 	}
 	@GET
 	@Produces("application/json")
-	public Collection<Artist> getAll(){
-		return repository.getAllArtist();
+	public Collection<Artist> getAll(@QueryParam("artistName") String artistName,
+									@QueryParam("artistGen") String artistGen){
+		List<Artist> res = new ArrayList<Artist>();
+		for(Artist artist:repository.getAllArtist()) {
+			
+		
+			if((artistName == null || artistName.equals("")||artist.getNombre().equals(artistName))
+			&& (artistGen == null || artistGen.equals("")||artist.getGenero().equals(artistGen))) {
+				res.add(artist);
+			}
+		}
+		
+		return res;
 		}
 	@GET
 	@Path("/{id}")
@@ -56,7 +69,7 @@ public class ArtistListResource {
 	public Artist get(@PathParam("id") String id) throws NotFoundException{
 		Artist artista = repository.getArtist(id);
 		if( artista== null) {
-			throw new NotFoundException("El artista con el id -> "+ id + " no existe. Has probado con Melendi :D");
+			throw new NotFoundException("El artista con el id -> "+ id + " no existe. Recuerda el patron es ale-ID ;D");
 		}
 		return artista;
 		}
@@ -78,15 +91,16 @@ public class ArtistListResource {
 		}
 	@PUT
     @Consumes("application/json")
-    public Response updatePlaylist(Artist a) throws NotFoundException {
+    public Response updateArtist(Artist a) throws NotFoundException {
 		Artist oldArtist = repository.getArtist(a.getId());
         if (oldArtist == null) {
-            throw new NotFoundException("The playlist with id="+ a.getId() +" was not found");            
+            throw new NotFoundException("No hemos encontrado el artista con ID = "+ a.getId() +". Prueba con otro id y recuerda que el formato es ale-id.");            
         }
         
         if (a.getListaDeEventos()!=null)
-            throw new BadRequestException("The songs property is not editable.");
-        
+            throw new BadRequestException("La lista de evento no es editable :O");
+        if(!oldArtist.getNombre().contentEquals(a.getNombre()))
+        	return Response.status(javax.ws.rs.core.Response.Status.CONFLICT).build();
         // Update nombre
         if (a.getNombre()!=null)
         	oldArtist.setNombre(a.getNombre());
@@ -108,7 +122,7 @@ public class ArtistListResource {
     public Response removeArtist(@PathParam("id") String id) throws NotFoundException {
         Artist toberemoved=repository.getArtist(id);
         if (toberemoved == null)
-            throw new NotFoundException("The playlist with id="+ id +" was not found");
+        	throw new NotFoundException("No hemos encontrado el artista con ID = "+ id +". Recuerda que el formato es ale-id.");
         else
             repository.removeArtist(id);
         
@@ -116,7 +130,7 @@ public class ArtistListResource {
     }
 	@POST    
     @Path("/{artistId}/{eventId}")
-    @Consumes("text/plain")
+    @Consumes("application/json")
     @Produces("application/json")
     public Response addEvent2Artist(@Context UriInfo uriInfo,@PathParam("artistId") String artistaId, @PathParam("eventId") String eventId) throws NotFoundException
     {                
@@ -125,7 +139,7 @@ public class ArtistListResource {
         Event event = repository.getEvent(eventId);
         
         if (artist==null)
-            throw new NotFoundException("el artista con id=" + artistaId + " no se ha encontrado");
+            throw new NotFoundException("El artista con id=" + artistaId + " no se ha encontrado");
         
         if (event == null)
             throw new NotFoundException("El evento con id=" + eventId + " no se ha encontrado");
@@ -149,10 +163,10 @@ public class ArtistListResource {
         Event event= repository.getEvent(eventId);
         
         if (artist==null)
-            throw new NotFoundException("The playlist with id=" + artistaId + " was not found");
+            throw new NotFoundException("El artista con id=" + artistaId + " no se ha encontrado");
         
-        if (eventId == null)
-            throw new NotFoundException("The song with id=" + eventId + " was not found");
+        if (event == null)
+            throw new NotFoundException("El evento con id=" + eventId + " no se ha encontrado");
         
         
         repository.removeEvent2Artist(artistaId, eventId);        
