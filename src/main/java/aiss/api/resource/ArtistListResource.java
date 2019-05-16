@@ -96,7 +96,7 @@ public class ArtistListResource {
 		
 		return resp.build();
 		}
-	
+	/*******RETOCAR*******/
 	@ApiOperation("Actualiza un artista.")
 	@PUT
     @Consumes("application/json")
@@ -106,8 +106,8 @@ public class ArtistListResource {
             throw new NotFoundException("No hemos encontrado el artista con ID = "+ a.getId() +". Prueba con otro id y recuerda que el formato es ale-id.");            
         }
         
-        if (a.getListaDeEventos()!=null)
-            throw new BadRequestException("La lista de evento no es editable :O");
+//        if (a.getListaDeEventos()!=null)
+//            throw new BadRequestException("La lista de evento no es editable :O");
         if(!oldArtist.getNombre().contentEquals(a.getNombre()))
         	return Response.status(javax.ws.rs.core.Response.Status.CONFLICT).build();
         // Update nombre
@@ -120,9 +120,9 @@ public class ArtistListResource {
         // Update genero
         if (a.getGenero()!=null)
         	oldArtist.setGenero(a.getGenero());
-        // Update edad
+        // Update edad 
         if (a.getEdad()!=null)
-        	oldArtist.setGenero(a.getGenero());
+        	oldArtist.setEdad(a.getEdad());
         
         return Response.noContent().build();
     }
