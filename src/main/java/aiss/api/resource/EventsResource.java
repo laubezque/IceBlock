@@ -88,7 +88,7 @@ public class EventsResource {
 	    	if (e.getNombre() == null || "".equals(e.getNombre()))
 	            throw new NotFoundException("El atributo nombre, es necesario.");
 	        
-	    	if (e.getFecha() == null || "".equals(e.getFecha().toString()))
+	    	if (e.getFecha() == null )
 	    		 throw new NotFoundException("El atributo fecha, es necesario.Recuerda es un LocalDate.");
 
 	        repository.addEvent(e);
