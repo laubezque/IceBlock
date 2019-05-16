@@ -71,7 +71,7 @@ public class EventsResource {
 	    	if (e.getNombre() == null || "".equals(e.getNombre()))
 	            throw new BadRequestException("El atributo nombre, es necesario.");
 	        
-	    	if (e.getFecha() == null || "".equals(e.getFecha()))
+	    	if (e.getFecha() == null || "".equals(e.getFecha().toString()))
 	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
 
 	        repository.addEvent(e);
@@ -96,8 +96,8 @@ public class EventsResource {
 	    	if (oldEvent.getNombre() == null || "".equals(oldEvent.getNombre()))
 	            throw new BadRequestException("El atributo nombre, es necesario.");
 	        
-	    	if (oldEvent.getFecha() == null || "".equals(oldEvent.getFecha().toString()))
-	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
+//	    	if (oldEvent.getFecha() == null || "".equals(oldEvent.getFecha().toString()))
+//	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
 	    	
 	    	if (oldEvent.getDescripcion() == null || "".equals(oldEvent.getDescripcion()))
 	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");

@@ -1,8 +1,6 @@
 package aiss.api.model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Event {
@@ -44,6 +42,7 @@ public class Event {
 		public void setLugar(String lugar) {
 			this.lugar = lugar;
 		}
+		
 		public LocalDateTime getFecha() {
 			return fecha;
 		}
