@@ -3,21 +3,24 @@ package aiss.api.model;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import api.util.LocalDate2String;
+import api.util.String2LocalDate;
 
 
 public class Event {
 	
-		private String id ; // -
-		private String lugar; // -
-		private String nombre; // -
+		private String id ; 
+		private String lugar; 
+		private String nombre; 
 		@JsonSerialize(converter= LocalDate2String.class)
-		private LocalDate fecha; // -
-		private String descripcion; // -
+		@JsonDeserialize(converter= String2LocalDate.class)
+		private LocalDate fecha; 
+		private String descripcion; 
 		@JsonProperty("capacidad_maxima_del_evento")
-		private Integer capacidadMaximaDelEvento; // -
+		private Integer capacidadMaximaDelEvento; 
 		
 		public Event() {}
 		
