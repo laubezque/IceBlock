@@ -1,6 +1,11 @@
 package aiss.api.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import api.util.LocalDate2String;
 
 
 public class Event {
@@ -8,13 +13,15 @@ public class Event {
 		private String id ; // -
 		private String lugar; // -
 		private String nombre; // -
-		private LocalDateTime fecha; // -
+		@JsonSerialize(converter= LocalDate2String.class)
+		private LocalDate fecha; // -
 		private String descripcion; // -
+		@JsonProperty("capacidad_maxima_del_evento")
 		private Integer capacidadMaximaDelEvento; // -
 		
 		public Event() {}
 		
-		public Event(String id,String nombre,String descripcion,LocalDateTime fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
+		public Event(String id,String nombre,String descripcion,LocalDate fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
 			this.id=id;
 			this.setNombre(nombre);
 			this.descripcion=descripcion;
@@ -22,7 +29,7 @@ public class Event {
 			this.lugar=lugar;
 			this.capacidadMaximaDelEvento= capacidadMaximaDelEvento;							
 		}
-		public Event(String nombre,String descripcion,LocalDateTime fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
+		public Event(String nombre,String descripcion,LocalDate fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
 			this.setNombre(nombre);
 			this.descripcion=descripcion;
 			this.fecha=fecha;
@@ -43,10 +50,10 @@ public class Event {
 			this.lugar = lugar;
 		}
 		
-		public LocalDateTime getFecha() {
+		public LocalDate getFecha() {
 			return fecha;
 		}
-		public void setFecha(LocalDateTime fecha) {
+		public void setFecha(LocalDate fecha) {
 			this.fecha = fecha;
 		}
 		public String getDescripcion() {

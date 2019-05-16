@@ -3,6 +3,8 @@ package aiss.api.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 
 public class Artist {
@@ -11,8 +13,10 @@ public class Artist {
 		private String nombre;
 		private String descripcion;
 		private Integer edad;
+		@JsonProperty("url_foto")
 		private String urlFoto;
 		private String genero;
+		@JsonProperty("lista_de_eventos")
 		private List<Event> listaDeEventos;
 		
 		public Artist() {}
