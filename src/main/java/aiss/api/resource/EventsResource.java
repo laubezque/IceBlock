@@ -38,16 +38,18 @@ public class EventsResource {
 	    public static EventsResource _instance=null;
 	    ArtistListRepository repository;
 	    
-	    private EventsResource(){
-	        repository=MapArtistListRepository.getInstance();
+	    public EventsResource(){
+        repository=MapArtistListRepository.getInstance();
 	    }
 	    
+	 	    
 	    public static EventsResource getInstance()
 	    {
 	        if(_instance==null)
 	            _instance=new EventsResource();
 	        return _instance; 
 	    }
+	    
 	    
 		@ApiOperation("Lista de eventos.")
 	    @GET
@@ -117,14 +119,14 @@ public class EventsResource {
 	    	if (oldEvent.getNombre() == null || "".equals(oldEvent.getNombre()))
 	            throw new BadRequestException("El atributo nombre, es necesario.");
 	        
-//	    	if (oldEvent.getFecha() == null || "".equals(oldEvent.getFecha().toString()))
-//	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
+	    	if (oldEvent.getFecha() == null)
+	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDate.");
 	    	
 	    	if (oldEvent.getDescripcion() == null || "".equals(oldEvent.getDescripcion()))
-	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
+	    		 throw new BadRequestException("El atributo descripcion, es necesario.Recuerda es un string.");
 	    	
 	    	if (oldEvent.getLugar() == null || "".equals(oldEvent.getLugar()))
-	    		 throw new BadRequestException("El atributo fecha, es necesario.Recuerda es un LocalDateTime.");
+	    		 throw new BadRequestException("El atributo lugar, es necesario.Recuerda es un string.");
 	    	
 	        return Response.noContent().build();
 	    }

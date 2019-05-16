@@ -15,7 +15,7 @@ public class Event {
 		private String id ; 
 		private String lugar; 
 		private String nombre; 
-		@JsonSerialize(converter= LocalDate2String.class)
+		
 		@JsonDeserialize(converter= String2LocalDate.class)
 		private LocalDate fecha; 
 		private String descripcion; 
@@ -24,16 +24,9 @@ public class Event {
 		
 		public Event() {}
 		
-		public Event(String id,String nombre,String descripcion,LocalDate fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
-			this.id=id;
-			this.setNombre(nombre);
-			this.descripcion=descripcion;
-			this.fecha=fecha;
-			this.lugar=lugar;
-			this.capacidadMaximaDelEvento= capacidadMaximaDelEvento;							
-		}
+		
 		public Event(String nombre,String descripcion,LocalDate fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
-			this.setNombre(nombre);
+			this.nombre=nombre;
 			this.descripcion=descripcion;
 			this.fecha=fecha;
 			this.lugar=lugar;

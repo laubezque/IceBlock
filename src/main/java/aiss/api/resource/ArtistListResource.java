@@ -38,7 +38,7 @@ public class ArtistListResource {
 	private static ArtistListResource _instance= null;
 	ArtistListRepository repository;
 	
-	private ArtistListResource() {
+	public ArtistListResource() {
 		repository= MapArtistListRepository.getInstance();
 		
 	}
