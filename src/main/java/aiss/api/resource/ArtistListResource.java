@@ -27,9 +27,12 @@ import aiss.api.model.ArtistList;
 import aiss.api.model.Event;
 import aiss.model.repository.ArtistListRepository;
 import aiss.model.repository.MapArtistListRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import javassist.NotFoundException;
 
 @Path("/artist")
+@Api(value = "Rest service for artist")
 public class ArtistListResource {
 
 	private static ArtistListResource _instance= null;
@@ -47,6 +50,7 @@ public class ArtistListResource {
 		}
 		return _instance;
 	}
+	@ApiOperation("Devuelve una lista de artistas.")
 	@GET
 	@Produces("application/json")
 	public Collection<Artist> getAll(@QueryParam("artistName") String artistName,
@@ -63,6 +67,8 @@ public class ArtistListResource {
 		
 		return res;
 		}
+	
+	@ApiOperation("Devuelve un artista por id.")
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
@@ -74,7 +80,8 @@ public class ArtistListResource {
 		return artista;
 		}
 	
-	@GET
+	@ApiOperation("Añade un artista.")
+	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response addArtist(@Context UriInfo uriInfo,Artist artist){
@@ -89,6 +96,8 @@ public class ArtistListResource {
 		
 		return resp.build();
 		}
+	
+	@ApiOperation("Actualiza un artista.")
 	@PUT
     @Consumes("application/json")
     public Response updateArtist(Artist a) throws NotFoundException {
@@ -117,6 +126,8 @@ public class ArtistListResource {
         
         return Response.noContent().build();
     }
+	
+	@ApiOperation("Elimina un artista por id.")
 	@DELETE
     @Path("/{id}")
     public Response removeArtist(@PathParam("id") String id) throws NotFoundException {
@@ -128,6 +139,8 @@ public class ArtistListResource {
         
         return Response.noContent().build();
     }
+
+	@ApiOperation("Añade un evento a un artista.")
 	@POST    
     @Path("/{artistId}/{eventId}")
     @Consumes("application/json")
@@ -156,6 +169,8 @@ public class ArtistListResource {
         resp.entity(artist);            
         return resp.build();
     }
+	
+	@ApiOperation("Elimina un evento del artista a partir del id del evento.")
 	@DELETE
 	@Path("/{artistId}/{eventId}")
     public Response removeEvent2Artist(@PathParam("artistId") String artistaId, @PathParam("eventId") String eventId) throws NotFoundException {

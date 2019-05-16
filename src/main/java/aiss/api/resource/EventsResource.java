@@ -22,6 +22,8 @@ import aiss.api.model.Artist;
 import aiss.api.model.Event;
 import aiss.model.repository.ArtistListRepository;
 import aiss.model.repository.MapArtistListRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import java.util.List;
 
 
 @Path("/events")
+@Api(value = "Rest service for events")
 public class EventsResource {
 	
 	    public static EventsResource _instance=null;
@@ -46,6 +49,7 @@ public class EventsResource {
 	        return _instance; 
 	    }
 	    
+		@ApiOperation("Lista de eventos.")
 	    @GET
 	    @Produces("application/json")
 	    public Collection<Event> getAll(@QueryParam("eventName") String eventName,
@@ -62,7 +66,7 @@ public class EventsResource {
 	        return res;
 	    }
 	    
-	    
+		@ApiOperation("Devuelve un evento por id.")
 	    @GET
 	    @Path("/{id}")
 	    @Produces("application/json")
@@ -76,6 +80,7 @@ public class EventsResource {
 	        return e;
 	    }
 	    
+		@ApiOperation("Añade un evento.")
 	    @POST
 	    @Consumes("application/json")
 	    @Produces("application/json")
@@ -98,6 +103,7 @@ public class EventsResource {
 	    }
 	    
 	    
+		@ApiOperation("Actualiza un evento.")
 	    @PUT
 	    @Consumes("application/json")
 	    public Response updateEvent(Event event) {
@@ -123,6 +129,7 @@ public class EventsResource {
 	        return Response.noContent().build();
 	    }
 	    
+		@ApiOperation("Elimina un evento por id.")
 	    @DELETE
 	    @Path("/{id}")
 	    public Response removeEvent(@PathParam("id") String eventId) {
