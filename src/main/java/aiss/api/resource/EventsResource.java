@@ -68,7 +68,7 @@ public class EventsResource {
 	        return res;
 	    }
 	    
-		@ApiOperation("Devuelve un evento por id.")
+
 	    @GET
 	    @Path("/{id}")
 	    @Produces("application/json")
@@ -82,16 +82,14 @@ public class EventsResource {
 	        return e;
 	    }
 	    
-		@ApiOperation("Añade un evento.")
+
 	    @POST
 	    @Consumes("application/json")
 	    @Produces("application/json")
 	    public Response addEvent(@Context UriInfo uriInfo, Event e) {
 	    	if (e.getNombre() == null || "".equals(e.getNombre()))
-	            throw new NotFoundException("El atributo nombre, es necesario.");
-	        
-	    	if (e.getFecha() == null )
-	    		 throw new NotFoundException("El atributo fecha, es necesario.Recuerda es un LocalDate.");
+	            throw new BadRequestException("El atributo nombre, es necesario.");
+	
 
 	        repository.addEvent(e);
 
@@ -105,13 +103,12 @@ public class EventsResource {
 	    }
 	    
 	    
-		@ApiOperation("Actualiza un evento.")
 	    @PUT
 	    @Consumes("application/json")
 	    public Response updateEvent(Event event) {
 	    	Event oldEvent = repository.getEvent(event.getId());
 	    	if(oldEvent== null){
-	    		throw new BadRequestException("El evento es necesario.Recuerda que no es posible actualizar algo inexistente.");
+	    		throw new NotFoundException("El evento es necesario.Recuerda que no es posible actualizar algo inexistente.");
 	    	}
 	    	 if(!oldEvent.getNombre().contentEquals(event.getNombre()))
 	         	return Response.status(javax.ws.rs.core.Response.Status.CONFLICT).build();
@@ -128,10 +125,9 @@ public class EventsResource {
 	    	if (oldEvent.getLugar() == null || "".equals(oldEvent.getLugar()))
 	    		 throw new BadRequestException("El atributo lugar, es necesario.Recuerda es un string.");
 	    	
-	        return Response.noContent().build();
+	        return Response.ok().build();
 	    }
 	    
-		@ApiOperation("Elimina un evento por id.")
 	    @DELETE
 	    @Path("/{id}")
 	    public Response removeEvent(@PathParam("id") String eventId) {
@@ -141,7 +137,7 @@ public class EventsResource {
 	    	}else {
 	    		repository.removeEvent(eventId);
 	    	}
-	        return Response.noContent().build();
+	        return Response.ok().build();
 	    }
 	    
 	}

@@ -50,7 +50,7 @@ public class ArtistListResource {
 		}
 		return _instance;
 	}
-	@ApiOperation("Devuelve una lista de artistas.")
+
 	@GET
 	@Produces("application/json")
 	public Collection<Artist> getAll(@QueryParam("artistName") String artistName,
@@ -68,7 +68,7 @@ public class ArtistListResource {
 		return res;
 		}
 	
-	@ApiOperation("Devuelve un artista por id.")
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
@@ -79,8 +79,7 @@ public class ArtistListResource {
 		}
 		return artista;
 		}
-	
-	@ApiOperation("Añade un artista.")
+
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -97,7 +96,7 @@ public class ArtistListResource {
 		return resp.build();
 		}
 	/*******RETOCAR*******/
-	@ApiOperation("Actualiza un artista.")
+
 	@PUT
     @Consumes("application/json")
     public Response updateArtist(Artist a) throws NotFoundException {
@@ -106,14 +105,10 @@ public class ArtistListResource {
             throw new NotFoundException("No hemos encontrado el artista con ID = "+ a.getId() +". Prueba con otro id y recuerda que el formato es ale-id.");            
         }
         
-//        if (a.getListaDeEventos()!=null)
-//            throw new BadRequestException("La lista de evento no es editable :O");
+        if (a.getListaDeEventos()!=null)
+            throw new BadRequestException("La lista de evento no es editable :O");
         if(!oldArtist.getNombre().contentEquals(a.getNombre()))
         	return Response.status(javax.ws.rs.core.Response.Status.CONFLICT).build();
-        // Update nombre
-        if (a.getNombre()!=null)
-        	oldArtist.setNombre(a.getNombre());
-        
         // Update descripcion
         if (a.getDescripcion()!=null)
         	oldArtist.setDescripcion(a.getDescripcion());
@@ -124,10 +119,10 @@ public class ArtistListResource {
         if (a.getEdad()!=null)
         	oldArtist.setEdad(a.getEdad());
         
-        return Response.noContent().build();
+        return Response.ok().build();
     }
 	
-	@ApiOperation("Elimina un artista por id.")
+
 	@DELETE
     @Path("/{id}")
     public Response removeArtist(@PathParam("id") String id) throws NotFoundException {
@@ -137,10 +132,10 @@ public class ArtistListResource {
         else
             repository.removeArtist(id);
         
-        return Response.noContent().build();
+        return Response.ok().build();
     }
 
-	@ApiOperation("Añade un evento a un artista.")
+
 	@POST    
     @Path("/{artistId}/{eventId}")
     @Consumes("application/json")
@@ -158,7 +153,7 @@ public class ArtistListResource {
             throw new NotFoundException("El evento con id=" + eventId + " no se ha encontrado");
         
         if (artist.getEvent(eventId)!=null)
-            throw new BadRequestException("The song is already included in the playlist.");
+            throw new BadRequestException("El evento ya esta asignado");
             
         repository.addEvent2Artist(artistaId, eventId);        
 
@@ -170,7 +165,7 @@ public class ArtistListResource {
         return resp.build();
     }
 	
-	@ApiOperation("Elimina un evento del artista a partir del id del evento.")
+
 	@DELETE
 	@Path("/{artistId}/{eventId}")
     public Response removeEvent2Artist(@PathParam("artistId") String artistaId, @PathParam("eventId") String eventId) throws NotFoundException {
@@ -185,8 +180,8 @@ public class ArtistListResource {
         
         
         repository.removeEvent2Artist(artistaId, eventId);        
-        
-        return Response.noContent().build();
+//       Response.noContent().build()
+        return Response.ok().build();
     }
 
 
