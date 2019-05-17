@@ -1,0 +1,900 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ICE BLOCK</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>ICE BLOCK</h1>
+    <div class="app-desc">Este es un sample de la api ice block</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="iceblockproyectoaiss@gmail.com">iceblockproyectoaiss@gmail.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/proyects/eso/1.0.0</div>
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Artista">Artista</a></h4>
+  <ul>
+  <li><a href="#artistArtistIdEventIdPost"><code><span class="http-method">post</span> /artist/{artistId}/{eventId}</code></a></li>
+  <li><a href="#artistGet"><code><span class="http-method">get</span> /artist</code></a></li>
+  <li><a href="#artistPost"><code><span class="http-method">post</span> /artist</code></a></li>
+  <li><a href="#deleteArtista"><code><span class="http-method">delete</span> /artist/{artistId}</code></a></li>
+  <li><a href="#deleteEventfromArtist"><code><span class="http-method">delete</span> /artist/{artistId}/{eventId}</code></a></li>
+  <li><a href="#getArtistById"><code><span class="http-method">get</span> /artist/{artistId}</code></a></li>
+  <li><a href="#updateArtist"><code><span class="http-method">put</span> /artist</code></a></li>
+  </ul>
+  <h4><a href="#Eventos">Eventos</a></h4>
+  <ul>
+  <li><a href="#artistArtistIdEventIdPost"><code><span class="http-method">post</span> /artist/{artistId}/{eventId}</code></a></li>
+  <li><a href="#deleteEvent"><code><span class="http-method">delete</span> /events/{eventId}</code></a></li>
+  <li><a href="#deleteEventfromArtist"><code><span class="http-method">delete</span> /artist/{artistId}/{eventId}</code></a></li>
+  <li><a href="#eventsGet"><code><span class="http-method">get</span> /events</code></a></li>
+  <li><a href="#eventsPost"><code><span class="http-method">post</span> /events</code></a></li>
+  <li><a href="#getEventById"><code><span class="http-method">get</span> /events/{eventId}</code></a></li>
+  <li><a href="#updateEvent"><code><span class="http-method">put</span> /events</code></a></li>
+  </ul>
+
+  <h1><a name="Artista">Artista</a></h1>
+  <div class="method"><a name="artistArtistIdEventIdPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /artist/{artistId}/{eventId}</code></pre></div>
+    <div class="method-summary">Añade un evento a un artista concreto (<span class="nickname">artistArtistIdEventIdPost</span>)</div>
+    <div class="method-notes">Añade un evento a un artista concreto</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">artistId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id del artista al que se le quiere añadir el evento </div><div class="param">eventId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id del evento que se quiere añadir </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">event <a href="#Evento">Evento</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The event to create. </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Artist not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="artistGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /artist</code></pre></div>
+    <div class="method-summary">Muestra todos los artistas (<span class="nickname">artistGet</span>)</div>
+    <div class="method-notes">Muestra los valores que tiene el artista</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Artista">Artista</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descripción" : "dubidu",
+  "urlFoto" : "élwfmlef.com",
+  "genero" : "pop",
+  "artistId" : "2",
+  "eventos" : [ {
+    "descripcion" : "bua que locura",
+    "eventId" : "0",
+    "fecha" : "11/06/19",
+    "lugar" : "Madrid",
+    "capacidadMaximaDelEvento" : 50000,
+    "nombre" : "Mad Cool"
+  }, {
+    "descripcion" : "bua que locura",
+    "eventId" : "0",
+    "fecha" : "11/06/19",
+    "lugar" : "Madrid",
+    "capacidadMaximaDelEvento" : 50000,
+    "nombre" : "Mad Cool"
+  } ],
+  "nombre" : "Melendi",
+  "edad" : 40
+}, {
+  "descripción" : "dubidu",
+  "urlFoto" : "élwfmlef.com",
+  "genero" : "pop",
+  "artistId" : "2",
+  "eventos" : [ {
+    "descripcion" : "bua que locura",
+    "eventId" : "0",
+    "fecha" : "11/06/19",
+    "lugar" : "Madrid",
+    "capacidadMaximaDelEvento" : 50000,
+    "nombre" : "Mad Cool"
+  }, {
+    "descripcion" : "bua que locura",
+    "eventId" : "0",
+    "fecha" : "11/06/19",
+    "lugar" : "Madrid",
+    "capacidadMaximaDelEvento" : 50000,
+    "nombre" : "Mad Cool"
+  } ],
+  "nombre" : "Melendi",
+  "edad" : 40
+} ]</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="artistPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /artist</code></pre></div>
+    <div class="method-summary">Añade un artista (<span class="nickname">artistPost</span>)</div>
+    <div class="method-notes">Añade un artista a la lista</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">artist <a href="#Artista">Artista</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The artist to create. </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteArtista"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /artist/{artistId}</code></pre></div>
+    <div class="method-summary">Elimina un artista por su id (<span class="nickname">deleteArtista</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">artistId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; El id del artista que se quiere eliminar </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Artist not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteEventfromArtist"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /artist/{artistId}/{eventId}</code></pre></div>
+    <div class="method-summary">Elimina un evento perteneciente al artista con ese id (<span class="nickname">deleteEventfromArtist</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">artistId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; El id del artista al que se quiere eliminar un evento </div><div class="param">eventId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; el id del evento que se quiere eliminar </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Event not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getArtistById"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /artist/{artistId}</code></pre></div>
+    <div class="method-summary">Encuentra artista por su id (<span class="nickname">getArtistById</span>)</div>
+    <div class="method-notes">Devuelve el artista con ese id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">artistId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; el id del artista a retornar </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Evento">Evento</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "descripcion" : "bua que locura",
+  "eventId" : "0",
+  "fecha" : "11/06/19",
+  "lugar" : "Madrid",
+  "capacidadMaximaDelEvento" : 50000,
+  "nombre" : "Mad Cool"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#Evento">Evento</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateArtist"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /artist</code></pre></div>
+    <div class="method-summary">Actualiza artista existente (<span class="nickname">updateArtist</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#Artista">Artista</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">309</h4>
+    Conflict
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Artist not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Eventos">Eventos</a></h1>
+  <div class="method"><a name="artistArtistIdEventIdPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /artist/{artistId}/{eventId}</code></pre></div>
+    <div class="method-summary">Añade un evento a un artista concreto (<span class="nickname">artistArtistIdEventIdPost</span>)</div>
+    <div class="method-notes">Añade un evento a un artista concreto</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">artistId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id del artista al que se le quiere añadir el evento </div><div class="param">eventId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id del evento que se quiere añadir </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">event <a href="#Evento">Evento</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The event to create. </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Artist not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteEvent"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /events/{eventId}</code></pre></div>
+    <div class="method-summary">Elimina un evento (<span class="nickname">deleteEvent</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">eventId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; El id del evento que se quiere eliminar </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Event not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteEventfromArtist"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /artist/{artistId}/{eventId}</code></pre></div>
+    <div class="method-summary">Elimina un evento perteneciente al artista con ese id (<span class="nickname">deleteEventfromArtist</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">artistId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; El id del artista al que se quiere eliminar un evento </div><div class="param">eventId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; el id del evento que se quiere eliminar </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Event not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="eventsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /events</code></pre></div>
+    <div class="method-summary">Obtener una lista de eventos. (<span class="nickname">eventsGet</span>)</div>
+    <div class="method-notes">Muestra una lista de evento</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Evento">Evento</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descripcion" : "bua que locura",
+  "eventId" : "0",
+  "fecha" : "11/06/19",
+  "lugar" : "Madrid",
+  "capacidadMaximaDelEvento" : 50000,
+  "nombre" : "Mad Cool"
+}, {
+  "descripcion" : "bua que locura",
+  "eventId" : "0",
+  "fecha" : "11/06/19",
+  "lugar" : "Madrid",
+  "capacidadMaximaDelEvento" : 50000,
+  "nombre" : "Mad Cool"
+} ]</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    éxito
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="eventsPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /events</code></pre></div>
+    <div class="method-summary">Añade un evento (<span class="nickname">eventsPost</span>)</div>
+    <div class="method-notes">Añade un evento a la lista</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">evento <a href="#Evento">Evento</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The event to create. </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getEventById"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /events/{eventId}</code></pre></div>
+    <div class="method-summary">Encuentra evento por su id (<span class="nickname">getEventById</span>)</div>
+    <div class="method-notes">Devuelve el evento con ese id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">eventId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; el id del evento a retornar </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Evento">Evento</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "descripcion" : "bua que locura",
+  "eventId" : "0",
+  "fecha" : "11/06/19",
+  "lugar" : "Madrid",
+  "capacidadMaximaDelEvento" : 50000,
+  "nombre" : "Mad Cool"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#Evento">Evento</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateEvent"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /events</code></pre></div>
+    <div class="method-summary">Actualiza evento existente (<span class="nickname">updateEvent</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#Evento">Evento</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; objeto evento que necesita ser añadido </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">309</h4>
+    Conflict
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Event not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Artista"><code>Artista</code> - </a></li>
+    <li><a href="#Evento"><code>Evento</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Artista"><code>Artista</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">artistId </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">nombre </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">descripción (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">edad (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">urlFoto (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">genero </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">eventos (optional)</div><div class="param-desc"><span class="param-type"><a href="#Evento">array[Evento]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Evento"><code>Evento</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">eventId </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">lugar </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">nombre </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fecha </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">descripcion </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">capacidadMaximaDelEvento </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
