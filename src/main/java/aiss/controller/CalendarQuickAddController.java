@@ -35,6 +35,8 @@ public class CalendarQuickAddController extends HttpServlet {
 		String accessToken = (String) req.getSession().getAttribute("GoogleCalendar-token");
         GoogleCalendarResource gdResource = new GoogleCalendarResource(accessToken);
      
+//		log.log(Level.FINE, "Token de google= " + accessToken + " se ha creado");
+
 		String string = req.getParameter("string");
 //		String fecha = req.getParameter("fecha");
 //		String hora = req.getParameter("hora");
@@ -45,7 +47,8 @@ public class CalendarQuickAddController extends HttpServlet {
         if (accessToken != null && !"".equals(accessToken)) {
         	
     		boolean success = gdResource.quickAddEvent(stringConvertido);
- 	
+			req.getSession().setAttribute("token", accessToken);
+
         	if (success) {
     			req.setAttribute("message", "Se ha añadido correctamente");
     			log.log(Level.FINE, "Event with string=" + string + " se ha creado");

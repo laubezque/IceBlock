@@ -23,6 +23,7 @@
             <h1 class="tituloInicio" id="titulo">Calendario Ice block</h1>
             <img class="logo" src="imagenes/Logo_transpa.png" alt="Logo Ice block"> 
     </header>
+    <p>${token}</p>
     
     <main class="main">
 	<div class="container">
