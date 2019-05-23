@@ -1,6 +1,5 @@
 package aiss.model.repository;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -39,7 +38,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		Event e1 =new Event();
 		e1.setCapacidadMaximaDelEvento(10000);
 		e1.setDescripcion("Evento cuna de las estrellas");
-		e1.setFecha(LocalDate.of(2020, 1, 31));
+		e1.setFecha("2020, 1, 31");
 		e1.setLugar("Madrid");
 		e1.setNombre("Gala de los Goya");
 		addEvent(e1);
@@ -47,7 +46,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		Event e2 =new Event();
 		e2.setCapacidadMaximaDelEvento(260000);
 		e2.setDescripcion("De la rubia a la morena ...");
-		e2.setFecha(LocalDate.of(2019, 1, 1));
+		e2.setFecha("2019, 1, 1");
 		e2.setLugar("Vva de la Serena");
 		e2.setNombre("Dia de la cerveza");
 		addEvent(e2);
@@ -55,7 +54,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		Event e3 =new Event();
 		e3.setCapacidadMaximaDelEvento(1000);
 		e3.setDescripcion("Colorao y al remoho");
-		e3.setFecha(LocalDate.of(2020, 2, 2));
+		e3.setFecha("2020, 2, 2");
 		e3.setLugar("El puerto");
 		e3.setNombre("Dia del cangrejo");
 		addEvent(e3);
@@ -63,7 +62,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		Event e4 =new Event();
 		e4.setCapacidadMaximaDelEvento(200);
 		e4.setDescripcion("Evento exclusivo para afiliados");
-		e4.setFecha(LocalDate.of(2020, 3, 2));
+		e4.setFecha("2020, 2, 2");
 		e4.setLugar("Rotas");
 		e4.setNombre("Dia de la de Rota");
 		addEvent(e4);
@@ -71,7 +70,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		Event e5 =new Event();
 		e5.setCapacidadMaximaDelEvento(2);
 		e5.setDescripcion("Una sola participacion");
-		e5.setFecha(LocalDate.of(2020, 1, 31));
+		e5.setFecha("2020, 1, 31");
 		e5.setLugar("Valencia");
 		e5.setNombre("Los coches choque");
 		addEvent(e5);
@@ -79,7 +78,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		Event e6 =new Event();
 		e6.setCapacidadMaximaDelEvento(6775456);
 		e6.setDescripcion("Como en una sauna");
-		e6.setFecha(LocalDate.of(2020, 1, 21));
+		e6.setFecha("2020,9,1");
 		e6.setLugar("Sevilla");
 		e6.setNombre("Dia del calor");
 		addEvent(e6);
@@ -87,7 +86,7 @@ public class MapArtistListRepository implements ArtistListRepository{
 		Event e7 =new Event();
 		e7.setCapacidadMaximaDelEvento(100);
 		e7.setDescripcion("En la cima de lo chic");
-		e7.setFecha(LocalDate.of(2020, 2, 11));
+		e7.setFecha("2020, 2, 2");
 		e7.setLugar("Pirineos");
 		e7.setNombre("La pirinaica");
 		addEvent(e7);

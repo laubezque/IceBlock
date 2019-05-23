@@ -17,7 +17,7 @@ public class Event {
 		private String nombre; 
 		
 		@JsonDeserialize(converter= String2LocalDate.class)
-		private LocalDate fecha; 
+		private String fecha; 
 		private String descripcion; 
 		@JsonProperty("capacidad_maxima_del_evento")
 		private Integer capacidadMaximaDelEvento; 
@@ -25,7 +25,7 @@ public class Event {
 		public Event() {}
 		
 		
-		public Event(String nombre,String descripcion,LocalDate fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
+		public Event(String nombre,String descripcion,String fecha,String lugar,String genero,Integer capacidadMaximaDelEvento) {
 			this.nombre=nombre;
 			this.descripcion=descripcion;
 			this.fecha=fecha;
@@ -46,10 +46,10 @@ public class Event {
 			this.lugar = lugar;
 		}
 		
-		public LocalDate getFecha() {
+		public String getFecha() {
 			return fecha;
 		}
-		public void setFecha(LocalDate fecha) {
+		public void setFecha(String fecha) {
 			this.fecha = fecha;
 		}
 		public String getDescripcion() {
