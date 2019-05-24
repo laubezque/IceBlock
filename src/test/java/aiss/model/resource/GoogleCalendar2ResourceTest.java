@@ -15,9 +15,9 @@ public class GoogleCalendar2ResourceTest {
 	public void DeleteEvent() throws IOException  {
 		Boolean evento, evento2, evento3;
 		GoogleCalendarResource gdResource = new GoogleCalendarResource(access_token);
-		String idPrimerEvento = "ulnrk5kknsi9bc1upv58hi7m10";
-		String idSegundoEvento = "3l2jicf4rcbiobjj5clr28ctfo";
-		String idTerceroEvento = "b1i2j9c2qgob7purcuho7ml6s8";
+		String idPrimerEvento = "besgebfcri71kkjdalllqbdg8s";
+		String idSegundoEvento = "mk1m6fi02rki7lrff2dbmgc798";
+		String idTerceroEvento = "35206t3ak8ropu3pl1gcu5g110";
 
 		
 		evento = gdResource.deleteEvent(idPrimerEvento);
