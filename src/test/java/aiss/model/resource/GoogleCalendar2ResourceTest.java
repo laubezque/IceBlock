@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.junit.Test;
 
 public class GoogleCalendar2ResourceTest {
-    private final static String access_token = "ya29.GlsQB9zBExFvjOBVyaLeBya1FO0uOJAWd8BH9oul-vAGBKkN-RE85lBly9mVIH36dGxpeYUeyegIjBg3gzGVt6aF-PxUiUV8kw7gtHZjNyr9-IsI6QsRgryw4OhI";
+    private final static String access_token = "ya29.GlsZB9A8l7LkxxFAuoj07SoF1wwuQV8PCgeU7G2eHEx9Q8BX41gKt0lqIo80qEQFivMsZpDroxXQWga-gJ4CYELWhxE_ZXP82OWG7N76EbKiBw8sNcMtOdPx6tdZ";
 
     //Es necesario cambiar las id's por las válidas
 	
@@ -15,9 +15,9 @@ public class GoogleCalendar2ResourceTest {
 	public void DeleteEvent() throws IOException  {
 		Boolean evento, evento2, evento3;
 		GoogleCalendarResource gdResource = new GoogleCalendarResource(access_token);
-		String idPrimerEvento = "besgebfcri71kkjdalllqbdg8s";
-		String idSegundoEvento = "mk1m6fi02rki7lrff2dbmgc798";
-		String idTerceroEvento = "35206t3ak8ropu3pl1gcu5g110";
+		String idPrimerEvento = "neki22snn4gh0ar4aocfjmhuso";
+		String idSegundoEvento = "60b7dn3ua2un5iqpgiu6pj0ceo";
+		String idTerceroEvento = "ksoqohkmsjkd0uf4bsj3k1hlbs";
 
 		
 		evento = gdResource.deleteEvent(idPrimerEvento);

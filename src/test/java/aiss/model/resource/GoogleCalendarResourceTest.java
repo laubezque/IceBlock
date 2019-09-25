@@ -9,7 +9,7 @@ import aiss.model.resource.GoogleCalendarResource;
 
 public class GoogleCalendarResourceTest {
 	
-    private final static String access_token = "ya29.GlsQB9zBExFvjOBVyaLeBya1FO0uOJAWd8BH9oul-vAGBKkN-RE85lBly9mVIH36dGxpeYUeyegIjBg3gzGVt6aF-PxUiUV8kw7gtHZjNyr9-IsI6QsRgryw4OhI";
+    private final static String access_token = "ya29.GlsZB9A8l7LkxxFAuoj07SoF1wwuQV8PCgeU7G2eHEx9Q8BX41gKt0lqIo80qEQFivMsZpDroxXQWga-gJ4CYELWhxE_ZXP82OWG7N76EbKiBw8sNcMtOdPx6tdZ";
 
     //Es necesario utilizar un token válido para que funcione
 
